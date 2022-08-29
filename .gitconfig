@@ -1,0 +1,8 @@
+[credential]
+	helper = /home/user/.bas-git/bas-git-helper-init.sh
+[user]
+	email = dj.damianjablonski@gmail.com
+	name = Damian Jabłoński
+[credential "https://github.com"]
+	helper = cache --timeout=86400
+	helper = /home/user/.bas-git/bas-git-helper.sh

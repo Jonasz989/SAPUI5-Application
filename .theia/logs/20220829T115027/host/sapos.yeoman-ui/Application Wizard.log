@@ -1,0 +1,13 @@
+{
+  "label": "Application Wizard.AbstractWebviewPanel.@sap/fiori:app.@sap/generator-fiori",
+  "level": "error",
+  "message": "An error occurred: Request failed with status code 404",
+  "time": "2022-08-29T11:53:41.811Z"
+}
+{
+  "error": {},
+  "label": "Application Wizard.Webview Rpc.RpcExtension.RpcCommon",
+  "level": "error",
+  "message": "handleRequest: Failed processing request rpc-request id: 0.21741890354090443",
+  "time": "2022-08-29T11:57:45.413Z"
+}

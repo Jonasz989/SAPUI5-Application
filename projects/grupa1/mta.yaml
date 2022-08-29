@@ -1,0 +1,94 @@
+_schema-version: "3.2"
+ID: grupa1
+description: A Fiori application.
+version: 0.0.1
+modules:
+- name: grupa1-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: grupa1-destination-service
+    parameters:
+      content-target: true
+  - name: grupa1-repo-host
+    parameters:
+      service-key:
+        name: grupa1-repo-host-key
+  - name: grupa1-uaa
+    parameters:
+      service-key:
+        name: grupa1-uaa-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: grupa1_html_repo_host
+          ServiceInstanceName: grupa1-html5-srv
+          ServiceKeyName: grupa1-repo-host-key
+          sap.cloud.service: grupa1
+        - Authentication: OAuth2UserTokenExchange
+          Name: grupa1_uaa
+          ServiceInstanceName: grupa1-xsuaa-srv
+          ServiceKeyName: grupa1-uaa-key
+          sap.cloud.service: grupa1
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: grupa1-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: grupa1-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - grupa1.zip
+      name: grupa1
+      target-path: resources/
+- name: grupa1
+  type: html5
+  path: .
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: grupa1-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: grupa1-destination-service
+    service-plan: lite
+- name: grupa1-uaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: grupa1-xsuaa-srv
+    service-plan: application
+- name: grupa1-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: grupa1-html5-srv
+    service-plan: app-host
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true

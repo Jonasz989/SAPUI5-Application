@@ -1,0 +1,25 @@
+
+backends:
+
+# Pre-defined path-prefixes reserved for host-based routing, e.g: <devspacehost>-app1.<cluster-host>
+# Uncomment desired backend route below and fill-in missing properties, to allow access to your running application port
+#- path-prefix: app1
+#  description:
+#  url:
+#  rewrite-host: false
+#- path-prefix: app2
+#  description:
+#  url:
+#  rewrite-host: false
+#- path-prefix: app3
+#  description:
+#  url:
+#  rewrite-host: false
+#- path-prefix: app4
+#  description:
+#  url:
+#  rewrite-host: false
+#- path-prefix: app5
+#  description:
+#  url:
+#  rewrite-host: false
