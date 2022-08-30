@@ -4,7 +4,7 @@ sap.ui.define([
 ], function(BaseController, JSONModel) {
     "use strict";
     
-    return BaseController.extend("masterdetail.controller.Supplier", {
+    return BaseController.extend("grupa1.controller.Supplier", {
 
         onInit: function () {
             var oViewModel = new JSONModel({

@@ -5,7 +5,7 @@
     xmlns:forms="sap.ui.layout.form" controllerName="grupa1.controller.Supplier" height="100%"> 
     <ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false"> 
     <headerTitle> 
-    <ObjectPageHeader id="headerForTest" objectTitle="{Name}"objectSubtitle="ID: {ID}"/> 
+    <ObjectPageHeader id="headerForTest" objectTitle="{Name}" objectSubtitle="ID: {ID}"/> 
     </headerTitle> 
     <headerContent> 
             <layout:VerticalLayout> 
