@@ -286,7 +286,7 @@ sap.ui.define([
         /**
          * create new category
          */
-        onAddCategoryClick: function(){
+        onAddCategoryClick: function() {
             this.oApproveDialog = new Dialog({
                 type: DialogType.Message,
                 title: "Create category",
@@ -299,7 +299,7 @@ sap.ui.define([
                     press: function () {
                         var oCat ={
                             "ID": Math.floor(Math.random()*101)+5,
-                            "Name":this.oApproveDialog.getContent()[0].getValue().length === 0 ? "Default": this.oApproveDialog.getContent()[0].getValue
+                            "Name":this.oApproveDialog.getContent()[0].getValue().length === 0 ? "Default": this.oApproveDialog.getContent()[0].getValue()
                         }
                         var oModel = this.getView().getModel();
 
