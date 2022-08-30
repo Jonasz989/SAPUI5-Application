@@ -54,7 +54,7 @@
                     </Column>
                 </columns>
                 <items>
-                    <ColumnListItem>
+                    <ColumnListItem press=".handleRowPress" type="Active">
                         <cells>
                             <ObjectIdentifier
                                 title="{Name}"

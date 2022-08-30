@@ -105,7 +105,13 @@
                         "list",
                         "object"
                     ]
+                },
+                {
+                    "pattern": "Products/{objectId}/Supplier",
+                    "name": "supp",
+                    "target": "supp"
                 }
+
             ],
             "targets": {
                 "list": {
@@ -118,6 +124,10 @@
                     "viewId": "detail",
                     "viewLevel": 1,
                     "controlAggregation": "midColumnPages"
+                },
+                "supp": {
+                    "viewName": "Supplier",
+                    "viewId": "supplier"
                 },
                 "detailObjectNotFound": {
                     "viewName": "DetailObjectNotFound",

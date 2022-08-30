@@ -58,6 +58,11 @@ sap.ui.define([
          * @param {object} oEvent an event containing the total number of items in the list
          * @private
          */
+
+        handleRowPress: function(oEvent){
+            const clickedItem = o
+        }
+
         onListUpdateFinished: function (oEvent) {
             var sTitle,
                 iTotalItems = oEvent.getParameter("total"),
