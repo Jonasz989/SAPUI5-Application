@@ -18,7 +18,7 @@ sap.ui.define([
         },
 
         _onObjectMatched: function (oEvent) {
-            var sObjectId = oEvent.getParameter("arguments").ObjectId;
+            var sObjectId = oEvent.getParameter("arguments").objectId;
             this.getModel("appView").setProperty("/layout", "OneColumn");
             this.getModel().metadataLoaded().then( function() {
                 this._bindView("/Products("+ sObjectId + ")/Supplier");
