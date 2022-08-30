@@ -321,6 +321,99 @@ sap.ui.define([
             this.oApproveDialog.open();
 
         },
+        /* =========================================================== */
+        /* update funkcja                                              */
+        /* =========================================================== */
+
+            onUpdateClick: function(oEvent){
+                var oModel = this.getView().getModel();
+
+                const clickedItemContext = oEvent.getSource().getBindingContext()
+                const clickedItemPath = clicketItemContext.getPath();
+                const clickedItemObject = clickedItemContext.getObject();
+                const prevName = clickedItemObject.Name;
+
+                this.oApproveDialog = new Dialog({
+                    type: DialogType.Message,
+                    title: "Update",
+                    content: new Input({
+                        id: "nameInput",
+                        value: prevName
+                    }),
+                    beginButton: new Button({
+                        type: ButtonType.Emphasized,
+                        text: "Submitata",
+                        press: function () {
+                            const newName = this.oApproveDialog.getContent()[0].getValue()
+                            oModel.read("/Categories", {
+                                success: function (data) {
+                                    console.log(data.results)
+                                    
+                                    const isNameFree = !data.results?.find(cat => cat.Name === newName);
+
+                                    if (isNameFree) {
+                                        this._updateConfirmDialog(prevName, newName, clickedItemPath);
+                                    } else {
+                                        console.log("is not free")
+                                        MessageBox.error("Kategoria z taka nazwa juz istnieje ;(", {
+                                            title: "Błąd"
+                                        })
+                                    }
+                                    this.oApproveDialog.destroy();
+                                }.bind(this),
+                                error: function (error) {
+                                    console.log(error)
+                                }
+                            });
+                        }.bind(this)
+                    }),
+                    endButton: new Button({
+                        text: "Cancel",
+                        press: function () {
+                            this.oApproveDialog.destroy();
+                        }.bind(this)
+                    })
+                });
+
+                this.oApproveDialog.open();
+            },
+
+
+
+            _updateConfirmDialog: function(prevName, newName, clickedItemPath){
+                var oModel = this.getView().getModel();
+
+                this.oConfirmDialog = new Dialog({
+                    type: DialogType.Message,
+                    title: "Confirmation",
+                    content: new Text({
+                        text: 'Czy jestes pewien, ze chcesz zmienic nazwe z ${prevName} na ${newName}?' 
+                    }),
+                    beginButton: new Button({
+                        type: 
+                        ButtonType.Accept,
+                        text: "Tak",
+                        press: function () {
+
+                            var oCat = {"Name": newName}
+                            oModel.update(clickedItemPath, oCat, {
+                                merge: true,
+                                success: function () { MessageToast.show("Sukces"); },
+                                error: function (oError) { MessageToast.show("Nie udalo sie"); }
+                            });
+                            this.oConfirmDialog.destroy();
+                        }.bind(this)
+                    }),
+                    endButton: new Button({
+                        text: "nie",
+                        type: ButtonType.Reject,
+                        press: function () {
+                            this.oConfirmDialog.destroy();
+                        }.bind(this)
+                    })
+                });
+                this.oConfirmDialog.open();
+            },
 
         /* =========================================================== */
         /* begin: internal methods                                     */
