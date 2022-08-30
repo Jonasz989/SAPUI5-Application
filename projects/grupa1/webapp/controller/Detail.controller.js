@@ -210,6 +210,13 @@ sap.ui.define([
             }
         },
 
+        /**
+         * create new product (name, description, release date, discontinued date, rating, price, category, supplier)
+         */
+        onAddProductClick: function(oEvent) {
+            this.getRouter().navTo("create")
+        },
+
         onCategoryUpdateClick: function(){
             this.oApproveDialog = new Dialog({
                 type: DialogType.Message,
