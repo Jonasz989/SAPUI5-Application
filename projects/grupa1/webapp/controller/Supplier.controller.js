@@ -4,7 +4,7 @@ sap.ui.define([
 ], function(BaseController, JSONModel) {
     "use strict";
     
-    return BaseController.extend("masterdetail.controller.Supplier", {
+    return BaseController.extend("grupa1.controller.Supplier", {
 
         onInit: function () {
             var oViewModel = new JSONModel({
@@ -18,7 +18,7 @@ sap.ui.define([
         },
 
         _onObjectMatched: function (oEvent) {
-            var sObjectId = oEvent.getParameter("arguments").ObjectId;
+            var sObjectId = oEvent.getParameter("arguments").objectId;
             this.getModel("appView").setProperty("/layout", "OneColumn");
             this.getModel().metadataLoaded().then( function() {
                 this._bindView("/Products("+ sObjectId + ")/Supplier");
