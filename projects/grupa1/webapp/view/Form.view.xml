@@ -1,0 +1,13 @@
+<mvc:View
+    controllerName="grupa1.controller.NotFound"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+
+    <MessagePage
+        id="lol"
+        title="Lol"
+        text="Lol"
+        icon="sap-icon://document">
+    </MessagePage>
+
+</mvc:View>
