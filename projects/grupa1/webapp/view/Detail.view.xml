@@ -75,7 +75,9 @@
                             <ObjectIdentifier
                                 title="{Name}"
                                 text="{ID}"/>
-                            <Text text="dupa"></Text>
+
+                            <Text text="KSAKS"></Text>
+
                             <ObjectNumber
                                 number="{
                                     path: 'Price',

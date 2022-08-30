@@ -77,7 +77,7 @@ sap.ui.define([
         },
         
         
-        handleRowPress: function(oEvent){
+        handleRowPress: function (oEvent){
             const clickedItem = oEvent.getSource().getBindingContext().getObject()
         
             this.getRouter().navTo("supp", {
