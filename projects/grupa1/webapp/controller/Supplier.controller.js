@@ -2,7 +2,7 @@ sap.ui.define([
     "./BaseController",
     "sap/ui/model/json/JSONModel",
 ], function(BaseController, JSONModel) {
-    'use strict';
+    "use strict";
     
     return BaseController.extend("masterdetail.controller.Supplier", {
 
