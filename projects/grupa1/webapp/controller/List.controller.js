@@ -296,7 +296,7 @@ sap.ui.define([
                 beginButton: new Button({
                     type: ButtonType.Emphasized,
                     text: "Submit",
-                    press: function(){
+                    press: function () {
                         var oCat ={
                             "ID": Math.floor(Math.random()*101)+5,
                             "Name":this.oApproveDialog.getContent()[0].getValue().length === 0 ? "Default": this.oApproveDialog.getContent()[0].getValue
@@ -304,8 +304,8 @@ sap.ui.define([
                         var oModel = this.getView().getModel();
 
                         oModel.create("/Categories", oCat, {
-                            success: function () { MessageToast.show("Success!");},
-                            error: function (oError) {MessageToast.show("Something went wrong :c");}
+                            success: function () { MessageToast.show("Success!"); },
+                            error: function (oError) { MessageToast.show("Something went wrong :c"); }
                         });
                         this.oApproveDialog.destroy();
                     }.bind(this)

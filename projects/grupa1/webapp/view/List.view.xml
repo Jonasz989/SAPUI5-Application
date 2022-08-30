@@ -84,7 +84,7 @@
                             type="Transparent"/>
                         <Button
                             id="addCategoryButton"
-                            press=".onCategoryClick"
+                            press=".onAddCategoryClick"
                             text="Add Category"
                             type="Accept"/>
 
