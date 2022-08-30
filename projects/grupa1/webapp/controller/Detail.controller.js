@@ -80,7 +80,7 @@ sap.ui.define([
         handleRowPress: function(oEvent){
             const clickedItem = oEvent.getSource().getBindingContext().getObject()
         
-            this.getRoute().navTo("supp", {
+            this.getRouter().navTo("supp", {
                 objectId: clickedItem.ID
             })
         },
