@@ -1,13 +1,13 @@
 <mvc:View
     controllerName="grupa1.controller.Form"
     xmlns="sap.m"
+    xmlns:semantic="sap.f.semantic"
     xmlns:mvc="sap.ui.core.mvc">
 
     <MessagePage
         id="lol"
         title="Lol"
-        text="Lol"
-        icon="sap-icon://document">
+        text="Lol">
     </MessagePage>
 
 </mvc:View>
