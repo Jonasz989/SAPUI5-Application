@@ -59,7 +59,7 @@
                             <ObjectIdentifier
                                 title="{Name}"
                                 text="{ID}"/>
-                            <Text text="SALS"></Text>
+                            <Text text="KSAKS"></Text>
                             <ObjectNumber
                                 number="{
                                     path: 'Price',
