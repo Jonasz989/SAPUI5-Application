@@ -114,7 +114,7 @@
                     "target": "supp"
                 },
                 {
-                    "pattern": "Products/create",
+                    "pattern": "Products/Create",
                     "name": "create",
                     "target": "create"
                 }
@@ -144,6 +144,10 @@
                 "notFound": {
                     "viewName": "NotFound",
                     "viewId": "notFound"
+                },
+                "create": {
+                    "viewName": "Create",
+                    "viewId": "create"
                 }
             }
         },
