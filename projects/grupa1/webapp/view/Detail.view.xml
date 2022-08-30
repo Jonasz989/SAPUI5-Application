@@ -37,7 +37,23 @@
                             text="{detailView>/lineItemListTitle}"
                             titleStyle="H3"
                             level="H3"/>
+                    <Button
+                        id="updateCategoryButton"
+                        press=".onCategoryUpdateClick"
+                        text="Update Category"
+                        type="Emphasized"/>
+                    <Button
+                        id="deleteonlyCategoryButton"
+                        press=".onCategoryDeleteonlyClick"
+                        text="Delete Only Category"
+                        type="Reject"/>
+                    <Button
+                        id="deleteCategoryItemsButton"
+                        press=".onCategoryDeletemultiClick"
+                        text="Delete Category with Items"
+                        type="Reject"/>
                     </Toolbar>
+                
                 </headerToolbar>
                 <columns>
                     <Column>
