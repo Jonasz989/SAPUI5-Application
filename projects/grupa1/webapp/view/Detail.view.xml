@@ -43,6 +43,9 @@
                     <Column>
                         <Text text="{i18n>detailLineItemTableIDColumn}"/>
                     </Column>
+                    <Column>
+                        <Text text="Supplier"/>
+                    </Column>
                     <Column
                         minScreenWidth="Tablet"
                         demandPopin="true"
@@ -56,6 +59,7 @@
                             <ObjectIdentifier
                                 title="{Name}"
                                 text="{ID}"/>
+                            <Text text="DOSTAWCA"></Text>
                             <ObjectNumber
                                 number="{
                                     path: 'Price',
