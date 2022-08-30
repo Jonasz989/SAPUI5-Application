@@ -60,7 +60,11 @@ sap.ui.define([
          */
 
         handleRowPress: function(oEvent){
-            const clickedItem = o
+            const clickedItem = oEvent.getSource().getBindingContext().getObject()
+
+            this.getRoute().navTo("supp", {
+                objectId: clickedItem.ID
+            })
         }
 
         onListUpdateFinished: function (oEvent) {
