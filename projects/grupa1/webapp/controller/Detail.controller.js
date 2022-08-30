@@ -58,20 +58,12 @@ sap.ui.define([
          * @param {object} oEvent an event containing the total number of items in the list
          * @private
          */
-
-        handleRowPress: function(oEvent){
-            const clickedItem = oEvent.getSource().getBindingContext().getObject()
-
-            this.getRoute().navTo("supp", {
-                objectId: clickedItem.ID
-            })
-        }
-
+        
         onListUpdateFinished: function (oEvent) {
             var sTitle,
-                iTotalItems = oEvent.getParameter("total"),
-                oViewModel = this.getModel("detailView");
-
+            iTotalItems = oEvent.getParameter("total"),
+            oViewModel = this.getModel("detailView");
+            
             // only update the counter if the length is final
             if (this.byId("lineItemsList").getBinding("items").isLengthFinal()) {
                 if (iTotalItems) {
@@ -83,7 +75,15 @@ sap.ui.define([
                 oViewModel.setProperty("/lineItemListTitle", sTitle);
             }
         },
-
+        
+        
+        handleRowPress: function(oEvent){
+            const clickedItem = oEvent.getSource().getBindingContext().getObject()
+        
+            this.getRoute().navTo("supp", {
+                objectId: clickedItem.ID
+            })
+        },
         /* =========================================================== */
         /* begin: internal methods                                     */
         /* =========================================================== */
