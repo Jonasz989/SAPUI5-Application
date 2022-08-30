@@ -21,12 +21,15 @@ sap.ui.define([
             var sObjectId = oEvent.getParameter("arguments").objectId;
             this.getModel("appView").setProperty("/layout", "OneColumn");
             this.getModel().metadataLoaded().then( function() {
-                this._bindView("/Products("+ sObjectId + ")/Supplier");
+                this._bindView("/Products("+ sObjectId + ")");
             }.bind(this));
         },
         _bindView: function (sObjectPatch) {
             this.getView().bindElement({
-                path : sObjectPatch
+                path : sObjectPatch,
+                parameters : {
+                    expand : "Supplier"
+                }
             });
         }
     })
