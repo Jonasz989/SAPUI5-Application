@@ -5,7 +5,7 @@
     xmlns:forms="sap.ui.layout.form" controllerName="grupa1.controller.Supplier" height="100%"> 
     <ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false"> 
     <headerTitle> 
-    <ObjectPageHeader id="headerForTest" objectTitle="PRODUKT" objectSubtitle="ID: {ID} "/> 
+    <ObjectPageHeader id="headerForTest" objectTitle="{Name}" objectSubtitle="ID: {ID} "/> 
     
     </headerTitle>
 
@@ -14,15 +14,15 @@
 
             <layout:VerticalLayout> 
                 <m:Label text="Release Date"/>
-                <m:Text text="DATA 1"/>  
+                <m:Text text="{ReleaseDate}"/>  
             </layout:VerticalLayout> 
             <layout:VerticalLayout> 
                 <m:Label text="Discontinued Date"/> 
-                <m:Text text="DATA 2"/> 
+                <m:Text text="{DiscontinuedDate}"/> 
             </layout:VerticalLayout> 
-            <m:RatingIndicator maxValue="5" class="sapUiSmallMarginBottom" value="1" tooltip="Rating Tooltip"/>
+            <m:RatingIndicator maxValue="5" class="sapUiSmallMarginBottom" value="{Rating}" tooltip="Rating Tooltip"/>
             <m:Text width="400px"
-					text="Hi, I'm Denise. I am passionate about what I do and I'll go the extra mile to make the customer win."/>
+					text="{Description}"/>
             <m:Button
                     id="updateProductButton"
                     press=".onProductUpdateClick"
@@ -44,19 +44,20 @@
                         <blocks> 
                             <forms:SimpleForm editable="false" layout="ColumnLayout"> 
                                 <m:Label text="Name"/> 
-                                <m:Text text="{Name}"/> 
+                                <m:Text text="{Supplier/Name}"/> 
                                 <m:Label text="Street"/> 
-                                <m:Text text="{Address/Street}"/> 
+                                <m:Text text="{Supplier/Address/Street}"/> 
                                 <m:Label text="State"/> 
-                                <m:Text text="{Address/State}"/>
+                                <m:Text text="{Supplier/Address/State}"/>
                                 <m:Label text="Zip Code"/> 
-                                <m:Text text="{Address/ZipCode}"/> 
+                                <m:Text text="{Supplier/Address/ZipCode}"/> 
                                 <m:Label text="Country"/> 
-                                <m:Text text="{Address/Country}"/>  
+                                <m:Text text="{Supplier/Address/Country}"/>  
 
                             </forms:SimpleForm> 
                         </blocks> 
-                    </ObjectPageSubSection> 
+                    </ObjectPageSubSection>
+                     
                 </subSections> 
             </ObjectPageSection> 
         </sections> 
