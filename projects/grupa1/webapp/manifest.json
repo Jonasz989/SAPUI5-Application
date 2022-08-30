@@ -112,6 +112,11 @@
                     "pattern": "Products/{objectId}/Supplier",
                     "name": "supp",
                     "target": "supp"
+                },
+                {
+                    "pattern": "Products/create",
+                    "name": "create",
+                    "target": "create"
                 }
 
             ],
