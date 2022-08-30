@@ -52,6 +52,11 @@
                         press=".onCategoryDeletemultiClick"
                         text="Delete Category with Items"
                         type="Reject"/>
+                    <Button
+                        id="AddProductButton"
+                        press=".onAddProductClick"
+                        text="Add Product"
+                        type="Accept"/>
                     </Toolbar>
                 
                 </headerToolbar>

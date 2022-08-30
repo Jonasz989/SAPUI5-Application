@@ -6,6 +6,7 @@
     <ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false"> 
     <headerTitle> 
     <ObjectPageHeader id="headerForTest" objectTitle="PRODUKT" objectSubtitle="ID: {ID} "/> 
+    
     </headerTitle>
 
     
@@ -22,13 +23,24 @@
             <m:RatingIndicator maxValue="5" class="sapUiSmallMarginBottom" value="1" tooltip="Rating Tooltip"/>
             <m:Text width="400px"
 					text="Hi, I'm Denise. I am passionate about what I do and I'll go the extra mile to make the customer win."/>
-
-
+            <m:Button
+                    id="updateProductButton"
+                    press=".onProductUpdateClick"
+                    text="Update Product"
+                    type="Emphasized"/>
+            <m:Button
+                    id="deleteProductButton"
+                    press=".onProductDeleteClick"
+                    text="Delete Product"
+                    type="Reject"/>
+        
     </headerContent> 
         <sections> 
+        
             <ObjectPageSection titleUppercase="false" title="2014 Goals Plan"> 
                 <subSections> 
                     <ObjectPageSubSection title="Supplier info" titleUppercase="false"> 
+                    
                         <blocks> 
                             <forms:SimpleForm editable="false" layout="ColumnLayout"> 
                                 <m:Label text="Name"/> 
@@ -41,6 +53,7 @@
                                 <m:Text text="{Address/ZipCode}"/> 
                                 <m:Label text="Country"/> 
                                 <m:Text text="{Address/Country}"/>  
+
                             </forms:SimpleForm> 
                         </blocks> 
                     </ObjectPageSubSection> 
