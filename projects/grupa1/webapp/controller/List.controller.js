@@ -320,7 +320,7 @@ sap.ui.define([
 
             this.oApproveDialog.open();
 
-        }
+        },
 
         /* =========================================================== */
         /* begin: internal methods                                     */
