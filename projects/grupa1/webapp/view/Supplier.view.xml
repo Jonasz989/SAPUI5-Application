@@ -1,82 +1,50 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" 
-
-    xmlns="sap.uxap" 
-    xmlns:layout="sap.ui.layout" 
-    xmlns:m="sap.m" 
-    xmlns:forms="sap.ui.layout.form" controllerName="masterdetail.controller.Supplier" height="100%"> 
-    <ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false"> 
-        <headerTitle> 
-            <ObjectPageHeader id="headerForTest" objectTitle="{Name}" objectSubtitle="ID: {ID}" /> 
-        </headerTitle> 
-        <headerContent> 
-<layout:VerticalLayout> 
-<m:Label text="Address"/> 
-</layout:VerticalLayout> 
-<layout:VerticalLayout> 
-<m:Label text="Street"/> 
-<m:Text text="{Address/Street}"/> 
-</layout:VerticalLayout> 
-<layout:VerticalLayout> 
-<m:Label text="City"/> 
-<m:Text text="{Address/City}"/> 
-</layout:VerticalLayout> 
-
-<layout:VerticalLayout> 
-
-<m:Label text="State"/> 
-
-<m:Text text="{Address/State}"/> 
-
-</layout:VerticalLayout> 
-
-<layout:VerticalLayout> 
-
-<m:Label text="Country" /> 
-
-<m:Text text="{Address/Country}"/> 
-
-</layout:VerticalLayout> 
-
-    </headerContent> 
-
- 
-
-<sections> 
-
-<ObjectPageSection titleUppercase="false" title="2014 Goals Plan"> 
-
-<subSections> 
-
-<ObjectPageSubSection title="Plan" titleUppercase="false"> 
-
-<blocks> 
-
-<forms:SimpleForm editable="false" layout="ColumnLayout"> 
-
-<m:Label text="Evangelize the UI framework across the company" /> 
-
-<m:Text text="4 days overdue Cascaded"/> 
-
-<m:Label text="Get trained in development management direction" /> 
-
-<m:Text text="Due Nov 21"/> 
-
-<m:Label text="Mentor junior developers" /> 
-
-<m:Text text="Due Dec 31 Cascaded"/> 
-
-</forms:SimpleForm> 
-
-</blocks> 
-
-</ObjectPageSubSection> 
-
-</subSections> 
-
-</ObjectPageSection> 
-
-</sections> 
-
-</ObjectPageLayout> 
-
+<mvc:View xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.uxap" 
+    xmlns:layout="sap.ui.layout" 
+    xmlns:m="sap.m" 
+    xmlns:forms="sap.ui.layout.form" controllerName="masterdetail.controller.Supplier" height="100%"> 
+    <ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false"> 
+    <headerTitle> 
+    <ObjectPageHeader id="headerForTest" objectTitle="{Name}"objectSubtitle="ID: {ID}"/> 
+    </headerTitle> 
+    <headerContent> 
+            <layout:VerticalLayout> 
+                <m:Label text="Address"/> 
+            </layout:VerticalLayout> 
+            <layout:VerticalLayout> 
+                <m:Label text="Street"/> 
+                <m:Text text="{Address/Street}"/> 
+            </layout:VerticalLayout> 
+            <layout:VerticalLayout> 
+                <m:Label text="City"/> 
+                <m:Text text="{Address/City}"/> 
+            </layout:VerticalLayout> 
+            <layout:VerticalLayout> 
+                <m:Label text="State"/> 
+                <m:Text text="{Address/State}"/> 
+            </layout:VerticalLayout> 
+            <layout:VerticalLayout> 
+                <m:Label text="Country" /> 
+                <m:Text text="{Address/Country}"/> 
+            </layout:VerticalLayout> 
+    </headerContent> 
+        <sections> 
+            <ObjectPageSection titleUppercase="false" title="2014 Goals Plan"> 
+                <subSections> 
+                    <ObjectPageSubSection title="Plan" titleUppercase="false"> 
+                        <blocks> 
+                            <forms:SimpleForm editable="false" layout="ColumnLayout"> 
+                                <m:Label text="Evangelize the UI framework across the company"/> 
+                                <m:Text text="4 days overdue Cascaded"/> 
+                                <m:Label text="Get trained in development management direction"/> 
+                                <m:Text text="Due Nov 21"/> 
+                                <m:Label text="Mentor junior developers"/> 
+                                <m:Text text="Due Dec 31 Cascaded"/> 
+                            </forms:SimpleForm> 
+                        </blocks> 
+                    </ObjectPageSubSection> 
+                </subSections> 
+            </ObjectPageSection> 
+        </sections> 
+    </ObjectPageLayout> 
 </mvc:View> 
