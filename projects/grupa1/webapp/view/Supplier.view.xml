@@ -5,28 +5,23 @@
     xmlns:forms="sap.ui.layout.form" controllerName="grupa1.controller.Supplier" height="100%"> 
     <ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false"> 
     <headerTitle> 
-    <ObjectPageHeader id="headerForTest" objectTitle="{Name}" objectSubtitle="ID: {ID}"/> 
+    <ObjectPageHeader id="headerForTest" objectTitle="PRODUKT" objectSubtitle="ID: {ID} "/> 
     </headerTitle> 
-    <headerContent> 
+    <headerContent>
+
             <layout:VerticalLayout> 
-                <m:Label text="Address"/> 
+                <m:Label text="Release Date"/>
+                <m:Text text="DATA 1"/>  
             </layout:VerticalLayout> 
             <layout:VerticalLayout> 
-                <m:Label text="Street"/> 
-                <m:Text text="{Address/Street}"/> 
+                <m:Label text="Discontinued Date"/> 
+                <m:Text text="DATA 2"/> 
             </layout:VerticalLayout> 
             <layout:VerticalLayout> 
-                <m:Label text="City"/> 
-                <m:Text text="{Address/City}"/> 
+                <m:Label text="Rating"/> 
+                <m:Text text="OCENA 1"/> 
             </layout:VerticalLayout> 
-            <layout:VerticalLayout> 
-                <m:Label text="State"/> 
-                <m:Text text="{Address/State}"/> 
-            </layout:VerticalLayout> 
-            <layout:VerticalLayout> 
-                <m:Label text="Country" /> 
-                <m:Text text="{Address/Country}"/> 
-            </layout:VerticalLayout> 
+
     </headerContent> 
         <sections> 
             <ObjectPageSection titleUppercase="false" title="2014 Goals Plan"> 
