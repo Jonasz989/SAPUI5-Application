@@ -6,10 +6,10 @@ sap.ui.define([
     return BaseController.extend("grupa1.controller.Form", {
 
         onInit: function () {
-            this.getRouter().getTarget("notFound").attachDisplay(this._onNotFoundDisplayed, this);
+            this.getRouter().getTarget("form").attachDisplay(this._onFormDisplayed, this);
         },
 
-        _onNotFoundDisplayed : function () {
+        _onFormDisplayed : function () {
             this.getModel("appView").setProperty("/layout", "OneColumn");
         }
     });
