@@ -217,113 +217,43 @@ sap.ui.define([
             this.getRouter().navTo("form", null)
         },
 
-        onCategoryUpdateClick: function(){
-            this.oApproveDialog = new Dialog({
-                type: DialogType.Message,
-                title: "Update Category",
-                content: new Input({
-                    id: "nameInput",
-                    value: prevname
-                }),
-                beginButton: new Button({
-                    type: ButtonType.Emphasized,
-                    text: "Submit",
-                    press: function(){
-                        const newName = this.oApproveDialog.getContent()[0].getValue()
-                        oModel.read("/Categories", {
-                            success: function(data){
-                                console.log(data.results)
-                                const isNameFree = !data.results?.find(cat => cat.Name === newName);
 
-                                if(isNameFree){
-                                    this._updateConfirmDialog(prevName, newName, itemPath);
-                                } else{
-                                    console.log("is not free")
-                                    MessageBox.error("Category with that name already exists!", {
-                                        title: "Error"
-                                    })
-                                }
-                                this.oApproveDialog.destroy();
-                            }.bind(this),
-                            error: function (error) {
-                                console.log(error)
-                            }
-                        });
-                    }.bind(this)
-                }),
-                endButhon: new Button({
-                    text: "Cancel",
-                    press: function () {
-                        this.oApproveDialog.destroy();
-                    }.bind(this)
-                })
-                }),
-                this.oApproveDialog.open();
-        },
+        /* =========================================================== */
+        /* update funkcja                                              */
+        /* =========================================================== */
 
-        _updateConfirmDialog: function(prevName,newName){
+        onUpdateClick: function(oEvent){
             var oModel = this.getView().getModel();
-            
-            this.oConfirmDialog = new Dialog({
-                    type: DialogType.Message,
-                    title: "Confirmation",
-                    content: new Text({
-                        text: `Are you sure you want to rename category from ${prevName} to ${newName}?`
-                    }),
-                    beginButton: new Button({
-                        type: ButtonType.Accept,
-                        text: "Yes",
-                        press: function(){
-                            var oCat = {"Name": newName}
-                            oModel.update(this.getPath(), oCat, {
-                                merge: true,
-                                success: function () {MessageToast.show("Success!");},
-                                error: function (oError) {MessageToast.show("Something went wrong :c");}
-                            });
-                            this.oConfirmDialog.destroy();
-                        }.bind(this)
-                    }),
-                    endButton: new Button({
-                        text: "No",
-                        type: ButtonType.Reject,
-                        press: function () {
-                            this.oConfirmDialog.destroy();
-                        }.bind(this)
-                    })
-            });
-            this.oConfirmDialog.open();
-        },
 
-        onCategoryUpdateClick1: function(oEvent){
-            var oModel = this.getView().getModel();
-            const itemContext = oEvent.getSource().getBindingContext()
-            const itemPath = itemContext.getPath();
-            const itemObject = itemContext();
-            const prevName = itemObject.Name;
+            const clickedItemContext = oEvent.getSource().getBindingContext()
+            const clickedItemPath = clicketItemContext.getPath();
+            const clickedItemObject = clickedItemContext.getObject();
+            const prevName = clickedItemObject.Name;
 
             this.oApproveDialog = new Dialog({
                 type: DialogType.Message,
                 title: "Update",
                 content: new Input({
                     id: "nameInput",
-                    value: prevname
+                    value: prevName
                 }),
                 beginButton: new Button({
                     type: ButtonType.Emphasized,
-                    text: "Submit",
-                    press: function() {
+                    text: "Submitata",
+                    press: function () {
                         const newName = this.oApproveDialog.getContent()[0].getValue()
                         oModel.read("/Categories", {
-                            success: function(data){
+                            success: function (data) {
                                 console.log(data.results)
+                                
                                 const isNameFree = !data.results?.find(cat => cat.Name === newName);
 
-                                if(isNameFree){
-                                    this._updateConfirmDialog(prevName, newName, itemPath);
-                                } else{
+                                if (isNameFree) {
+                                    this._updateConfirmDialog(prevName, newName, clickedItemPath);
+                                } else {
                                     console.log("is not free")
-                                    MessageBox.error("Category with that name already exists!", {
-                                        title: "Error"
+                                    MessageBox.error("Kategoria z taka nazwa juz istnieje ;(", {
+                                        title: "Błąd"
                                     })
                                 }
                                 this.oApproveDialog.destroy();
@@ -334,48 +264,54 @@ sap.ui.define([
                         });
                     }.bind(this)
                 }),
-                endButhon: new Button({
+                endButton: new Button({
                     text: "Cancel",
                     press: function () {
                         this.oApproveDialog.destroy();
                     }.bind(this)
                 })
-                }),
-                this.oApproveDialog.open();
+            });
+
+            this.oApproveDialog.open();
         },
 
-        _updateConfirmDialog1: function(prevName,newName,itemPath){
+
+
+        _updateConfirmDialog: function(prevName, newName, clickedItemPath){
             var oModel = this.getView().getModel();
-            
+
             this.oConfirmDialog = new Dialog({
-                    type: DialogType.Message,
-                    title: "Confirmation",
-                    content: new Text({
-                        text: `Are you sure you want to rename category from ${prevName} to ${newName}?`
-                    }),
-                    beginButton: new Button({
-                        type: ButtonType.Accept,
-                        text: "Yes",
-                        press: function(){
-                            var oCat = {"Name": newName}
-                            oModel.update(itemPath, oCat, {
-                                merge: true,
-                                success: function () {MessageToast.show("Success!");},
-                                error: function (oError) {MessageToast.show("Something went wrong :c");}
-                            });
-                            this.oConfirmDialog.destroy();
-                        }.bind(this)
-                    }),
-                    endButton: new Button({
-                        text: "No",
-                        type: ButtonType.Reject,
-                        press: function () {
-                            this.oConfirmDialog.destroy();
-                        }.bind(this)
-                    })
+                type: DialogType.Message,
+                title: "Confirmation",
+                content: new Text({
+                    text: 'Czy jestes pewien, ze chcesz zmienic nazwe z ${prevName} na ${newName}?' 
+                }),
+                beginButton: new Button({
+                    type: 
+                    ButtonType.Accept,
+                    text: "Tak",
+                    press: function () {
+
+                        var oCat = {"Name": newName}
+                        oModel.update(clickedItemPath, oCat, {
+                            merge: true,
+                            success: function () { MessageToast.show("Sukces"); },
+                            error: function (oError) { MessageToast.show("Nie udalo sie"); }
+                        });
+                        this.oConfirmDialog.destroy();
+                    }.bind(this)
+                }),
+                endButton: new Button({
+                    text: "nie",
+                    type: ButtonType.Reject,
+                    press: function () {
+                        this.oConfirmDialog.destroy();
+                    }.bind(this)
+                })
             });
             this.oConfirmDialog.open();
-        }
+        },
+        
     });
 
 });
