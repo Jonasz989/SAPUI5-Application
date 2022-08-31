@@ -128,10 +128,7 @@ sap.ui.define([
                     dataReceived: function () {
                         oViewModel.setProperty("/busy", false);
                     
-                    },
-                parameters : {
-                    expand : "Supplier"
-                }
+                    }
                 }
             });
         },

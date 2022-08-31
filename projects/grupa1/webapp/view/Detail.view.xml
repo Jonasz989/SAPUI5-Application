@@ -65,7 +65,7 @@
                         <Text text="{i18n>detailLineItemTableIDColumn}"/>
                     </Column>
                     <Column>
-                        <Text text="Supplier"/>
+                        <Text text="Description"/>
                     </Column>
                     <Column
                         minScreenWidth="Tablet"
@@ -81,7 +81,7 @@
                                 title="{Name}"
                                 text="{ID}"/>
 
-                            <Text text="Nie wiem czemu ale nie dziala"></Text>
+                            <Text text="{Description}"></Text>
 
                             <ObjectNumber
                                 number="{
