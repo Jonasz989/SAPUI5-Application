@@ -85,7 +85,7 @@
         type="Accept"/>
     <Button
         id="cancelproduct"
-        press=".onCancelProductClick"
+        press="history.back()"
         text="Cancel"
         type="Reject"/>
     </HBox>

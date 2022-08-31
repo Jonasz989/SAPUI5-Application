@@ -11,6 +11,10 @@ sap.ui.define([
 
         _onFormDisplayed : function () {
             this.getModel("appView").setProperty("/layout", "OneColumn");
+        },
+
+        onSaveProductClick: function (oEvent) {
+
         }
     });
 });
