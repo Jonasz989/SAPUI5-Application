@@ -1,100 +1,54 @@
-<mvc:View
-    controllerName="grupa1.controller.Form"
-    xmlns="sap.m"
-    xmlns:semantic="sap.f.semantic"
-    xmlns:mvc="sap.ui.core.mvc">
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="style.css"?>
+<mvc:View xmlns="sap.m" xmlns:semantic="sap.f.semantic" xmlns:mvc="sap.ui.core.mvc" controllerName="grupa1.controller.Form">
+  <semantic:SemanticPage id="formPage" busy="{formView&gt;/busy}" busyIndicatorDelay="{formView&gt;/delay}">
+    <semantic:titleHeading>
+      <Title id="titlexd" text="Create Product" level="H2"/>
+    </semantic:titleHeading>
+    <semantic:content>
+    <VBox id='vboxmain'>
+      <HBox id="vbox" leftMargin="50%">
+        <VBox id="name">
 
-<semantic:SemanticPage
-        id="formPage"
-        busy="{formView>/busy}"
-        busyIndicatorDelay="{formView>/delay}">
-        <semantic:titleHeading>
-            <Title
-                id="titlexd"
-                text="Create Product"
-                level="H2"/>
-        </semantic:titleHeading>
-        <semantic:content>
+            <Label width="100%" class="label-prod" id="prodname" text="Name: "/>
+            <Label width="100%" class="label-prod" id="proddesc" text="Description: "/>
+            <Label width="100%" class="label-prod" id="prodreldate" text="Released Date: "/>
+            <Label width="100%" class="label-prod" id="proddiscdate" text="Discontinued Date: "/>
+            <Label width="100%" class="label-prod" id="prodrating" text="Rating: "/>
+            <Label width="100%" class="label-prod" id="prodprice" text="Price: "/>
+            <Label width="100%" class="label-prod" id="prodcat" text="Category: "/>
+            <Label width="100%" class="label-prod" id="prodsup" text="Supplier: "/>
 
-            <VBox
-                id="vbox"
-                leftMargin="50%">
-            <HBox id="name">
-            <Label
-                id="prodname"
-                text="Name: "/>
-            <Input
-                id="prname"/>
-            </HBox>
-            <HBox id="desc">
-            <Label
-                id="proddesc"
-                text="Description: "/>
-            <Input
-                id="prdesc"/>
-            </HBox>
-            <HBox id="reldate">
-            <Label
-                id="prodreldate"
-                text="Released Date: "/>
-            <Input
-                id="prreldate"
-                type="date"/>
-            </HBox>
-            <HBox id="discdate">
-            <Label
-                id="proddiscdate"
-                text="Discontinued Date: "/>
-            <Input
-                id="prdiscdate"
-                type="date"/>
-            </HBox>
-            <HBox id="rating">
-            <Label
-                id="prodrating"
-                text="Rating: "/>
-            <Input
-                id="prrating"/>
-            </HBox>
-            <HBox id="price">
-            <Label
-                id="prodprice"
-                text="Price: "/>
-            <Input
-                id="prprice"/>
-            </HBox>
-            <HBox id="category">
-            <Label
-                id="prodcat"
-                text="Category: "/>
-            <Input
-                id="prcat"/>
-            </HBox>
-            <HBox id="supplier">
-            <Label
-                id="prodsup"
-                text="Supplier: "/>
-            <Input
-                id="prsup"/>
-            </HBox>
-    <HBox id="buttons">
-    <Button
-        id="saveproduct"
-        press=".onSaveProductClick"
-        text="Submit"
-        type="Accept"/>
-    <Button
-        id="cancelproduct"
-        press="history.back()"
-        text="Cancel"
-        type="Reject"/>
-    </HBox>
-    </VBox>
-            
+        </VBox>
+        <VBox id="desc">
+          <Input id="prdesc"/>
+          <Input id="prname"/>
+          <Input id="prreldate" type="date"/>
+          <Input id="prdiscdate" type="date"/>
+          <Input id="prrating"/>
+          <Input id="prsup"/>
+          <Input id="prprice"/>
+          <Input id="prcat"/>
+        </VBox>
+        <HBox id="reldate">
+        </HBox>
+        <HBox id="discdate">
+        </HBox>
+        <HBox id="rating">
+        </HBox>
+        <HBox id="price">
+        </HBox>
+        <HBox id="category">
+        </HBox>
+        <HBox id="supplier">
+        </HBox>
+
+      </HBox>
+        <HBox id="buttons">
+            <Button id="saveproduct" press=".onSaveProductClick" text="Submit" type="Accept"/>
+            <Button id="cancelproduct" press=".onCancelProductClick" text="Cancel" type="Reject"/>
+        </HBox>
+        </VBox>
     </semantic:content>
-
-    </semantic:SemanticPage>
-
-    
-
+  </semantic:SemanticPage>
 </mvc:View>

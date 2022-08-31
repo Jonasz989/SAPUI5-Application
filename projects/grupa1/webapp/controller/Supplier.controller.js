@@ -16,7 +16,7 @@ sap.ui.define([
 
             this.setModel(oViewModel, "supplierView");
         },
-
+        
         _onObjectMatched: function (oEvent) {
             var sObjectId = oEvent.getParameter("arguments").objectId;
             this.getModel("appView").setProperty("/layout", "OneColumn");
