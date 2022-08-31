@@ -38,10 +38,11 @@
                             titleStyle="H3"
                             level="H3"/>
                     <Button
-                        id="updateCategoryButton"
+                        id="updateId"
                         press=".onCategoryUpdateClick"
                         text="Update Category"
-                        type="Emphasized"/>
+                        type="Emphasized"
+                        active="true"/>
                     <Button
                         id="deleteonlyCategoryButton"
                         press=".onCategoryDeleteonlyClick"

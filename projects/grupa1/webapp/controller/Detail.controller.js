@@ -222,7 +222,7 @@ sap.ui.define([
         /* update funkcja                                              */
         /* =========================================================== */
 
-        onUpdateClick: function(oEvent){
+        onCategoryUpdateClick: function(oEvent){
             var oModel = this.getView().getModel();
 
             const clickedItemContext = oEvent.getSource().getBindingContext()
@@ -284,12 +284,11 @@ sap.ui.define([
                 type: DialogType.Message,
                 title: "Confirmation",
                 content: new Text({
-                    text: 'Czy jestes pewien, ze chcesz zmienic nazwe z ${prevName} na ${newName}?' 
+                    text: 'Are you sure you want to rename category from ${prevName} to ${newName}?' 
                 }),
                 beginButton: new Button({
-                    type: 
-                    ButtonType.Accept,
-                    text: "Tak",
+                    type: ButtonType.Accept,
+                    text: "Yes",
                     press: function () {
 
                         var oCat = {"Name": newName}
