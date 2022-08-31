@@ -100,7 +100,7 @@
                             formatter: '.formatter.numberUnit'
                         }" >
                         <ObjectAttribute active="true" id="updateId" text="Change name" press=".onUpdateClick" />
-                        </ObjectListItem>
+                    </ObjectListItem>
                 </items>
             </List>
         </semantic:content>
