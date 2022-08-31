@@ -10,6 +10,7 @@
         busyIndicatorDelay="{formView>/delay}">
         <semantic:titleHeading>
             <Title
+                id="titlexd"
                 text="Create Product"
                 level="H2"/>
         </semantic:titleHeading>
@@ -76,10 +77,21 @@
             <Input
                 id="prsup"/>
             </HBox>
+    <HBox id="buttons">
+    <Button
+        id="saveproduct"
+        press=".onSaveProductClick"
+        text="Submit"
+        type="Accept"/>
+    <Button
+        id="cancelproduct"
+        press=".onCancelProductClick"
+        text="Cancel"
+        type="Reject"/>
+    </HBox>
     </VBox>
-
             
-        </semantic:content>
+    </semantic:content>
 
     </semantic:SemanticPage>
 
