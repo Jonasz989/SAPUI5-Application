@@ -449,6 +449,52 @@ sap.ui.define([
 
         },
 
+        //usuwanie kategorii
+
+        onDeleteClick: function(oEvent) {
+            const clickedItemPath = oEvent.getSource().getBindingContext().getPath()
+            var oModel = this.getView().getModel();
+
+
+            this.oApproveDialog = new Dialog({
+                type: DialogType.Message,
+                title: "Potwierdz usuniecie",
+                beginButton: new Button({
+                    type: ButtonType.Emphasized,
+                    text: "Potwierdzam",
+                    press: function () {
+                       
+                        oModel.remove(clickedItemPath, {
+                            success: function (data) {
+                                MessageBox.success("Category has been deleted!", {
+                                    title: "Success"
+                                })
+                            },
+                            error: function (e) {
+                                alert("error");
+                            }
+                        });
+
+                        this.oApproveDialog.destroy();
+                    }.bind(this)
+                }),
+                endButton: new Button({
+                    text: "Cancel",
+                    press: function() {
+                        this.oApproveDialog.destroy();
+                    }.bind(this)
+                })
+            });
+
+            this.oApproveDialog.open();
+
+
+
+
+            
+            
+        },
+
         /* =========================================================== */
         /* begin: internal methods                                     */
         /* =========================================================== */
