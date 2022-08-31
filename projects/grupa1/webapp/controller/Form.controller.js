@@ -22,8 +22,8 @@ sap.ui.define([
                 "DiscontinuedDate": document.getElementById("prdiscdate").value,
                 "Rating": document.getElementById("prrating").value,
                 "Price": document.getElementById("prprice").value,
-                "Category/Name": document.getElementById("prcat").value,
-                "Supplier/Name": document.getElementById("prsup").value
+                "Category/ID": "1",
+                "Supplier/ID": "1"
             }
             var oModel = this.getView("detailView").getModel();
 
