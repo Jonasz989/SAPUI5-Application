@@ -31,7 +31,7 @@ controllerName="grupa1.controller.Form">
 
         </VBox>
         <VBox id="desc">
-          <Input type="textPassword" id="prdesc"/>
+          <Input id="prdesc" type=""/>
           <Input id="prname"/>
           <Input id="prreldate" type="date"/>
           <Input id="prdiscdate" type="date"/>
