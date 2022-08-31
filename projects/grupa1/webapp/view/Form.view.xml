@@ -36,9 +36,9 @@ controllerName="grupa1.controller.Form">
           <Input id="prreldate" type="date"/>
           <Input id="prdiscdate" type="date"/>
           <Input id="prrating"/>
-          <Input id="prsup"/>
           <Input id="prprice"/>
           <Input id="prcat"/>
+          <Input id="prsup"/>
         </VBox>
         <HBox id="reldate">
         </HBox>

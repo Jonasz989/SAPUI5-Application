@@ -14,20 +14,21 @@ sap.ui.define([
         },
 
         onSaveProductClick: function () {
+            console.log(this.getView().byId("prprice").getValue());
             var oCat={
-                "ID": Math.floor(Math.random()*151)-5,
-                "Name": document.getElementById("prname").value,
-                "Description": document.getElementById("prdesc").value,
-                "ReleaseDate": document.getElementById("prreldate").value,
-                "DiscontinuedDate": document.getElementById("prdiscdate").value,
-                "Rating": document.getElementById("prrating").value,
-                "Price": document.getElementById("prprice").value,
-                "Category/ID": "1",
-                "Supplier/ID": "1"
+                "ID": Math.floor(Math.random()*151)+5,
+                "Name": this.getView().byId("prname").getValue(),
+                "Description": this.getView().byId("prdesc").getValue(),
+                //"ReleaseDate": this.getView().byId("prreldate").getValue(),
+                //"DiscontinuedDate": this.getView().byId("prdiscdate").getValue(),
+                "Rating": this.getView().byId("prrating").getValue(),
+                "Price": this.getView().byId("prprice").getValue(),
+                //"Category/ID": "1",
+                //"Supplier/ID": "1"
             }
             var oModel = this.getView("detailView").getModel();
 
-            oModel.create("/Categories/1", oCat, {
+            oModel.create("/Products", oCat, {
                 success: function () { MessageToast.show("Success!"); },
                 error: function (oError) { MessageToast.show("Something went wrong :c"); }
             });

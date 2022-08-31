@@ -99,7 +99,8 @@
                             path: 'ID',
                             formatter: '.formatter.numberUnit'
                         }" >
-                        <ObjectAttribute active="true" id="updateId" text="Change name" press=".onUpdateClick"/>
+                        <ObjectAttribute active="true" id="updateId" text="Update" press=".onUpdateClick" />
+                        <ObjectAttribute active="true" id="deleteId" text="Delete" press=".onDeleteClick" />
                     </ObjectListItem>
                 </items>
             </List>

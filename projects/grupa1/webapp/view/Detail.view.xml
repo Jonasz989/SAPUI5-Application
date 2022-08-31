@@ -39,7 +39,7 @@
                             level="H3"/>
                     <Button
                         id="updateId"
-                        press=".onCategoryUpdateClick"
+                        press=".onUpdateClick"
                         text="Update Category"
                         type="Emphasized"
                         active="true"/>
