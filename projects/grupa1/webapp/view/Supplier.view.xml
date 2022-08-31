@@ -2,7 +2,13 @@
     xmlns="sap.uxap" 
     xmlns:layout="sap.ui.layout" 
     xmlns:m="sap.m" 
-    xmlns:forms="sap.ui.layout.form" controllerName="grupa1.controller.Supplier" height="100%"> 
+    xmlns:forms="sap.ui.layout.form" controllerName="grupa1.controller.Supplier" height="100%">
+
+    <m:Page
+		title="Back"
+		showNavButton="true"
+		navButtonPress=".onNavBack">
+	
     <ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false"> 
     <headerTitle> 
     <ObjectPageHeader id="headerForTest" objectTitle="{Name}" objectSubtitle="ID: {ID} "/> 
@@ -61,5 +67,6 @@
                 </subSections> 
             </ObjectPageSection> 
         </sections> 
-    </ObjectPageLayout> 
+    </ObjectPageLayout>
+    </m:Page> 
 </mvc:View> 
