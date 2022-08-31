@@ -16,7 +16,10 @@ sap.ui.define([
     "sap/m/MessageToast",
     "sap/m/MessageBox",
     "sap/m/Input"
-], function (BaseController, JSONModel, Filter, Sorter, FilterOperator, GroupHeaderListItem, Device, Fragment, formatter, Dialog, DialogType, Button, ButtonType, Text, MessageToast, MessageBox, Input) {
+
+], function (BaseController, JSONModel, Filter, Sorter, FilterOperator, GroupHeaderListItem, Device, Fragment, formatter, Dialog, DialogType, Button, ButtonType, Text,
+    MessageToast, MessageBox, Input) {
+
     "use strict";
 
     return BaseController.extend("grupa1.controller.List", {
@@ -170,6 +173,130 @@ sap.ui.define([
             }
         },
 
+        onAddCategoryClick: function() {
+            this.oApproveDialog = new Dialog({
+                type: DialogType.Message,
+                title: "Create category",
+                content: new Input({
+                    id: "nameInput"
+                }),
+                beginButton: new Button({
+                    type: ButtonType.Emphasized,
+                    text: "Submit",
+                    press: function () {
+                        var oCat = {
+                            "ID": Math.floor(Math.random() * 101) + 5,
+                            "Name": this.oApproveDialog.getContent()[0].getValue().length === 0 ? "Default" : this.oApproveDialog()[0].getValue()
+                        }
+                        var oModel = this.getView().getModel();
+
+                        oModel.create("/Categories", oCat, {
+                            success: function () { MessageToast.show("Success!"); },
+                            error: function (oError) { MessageToast.show("Something went wrong!"); }
+                        });
+                        this.oApproveDialog.destroy();
+                    }.bind(this)
+                }),
+                endButton: new Button({
+                    text: "Cancel",
+                    press: function () {
+                        this.oApproveDialog.destroy();
+                    }.bind(this)
+                })
+            });
+
+            this.oApproveDialog.open();
+        },
+
+        // Po wcisnieciu update
+        onUpdateClick: function(oEvent){
+            var oModel = this.getView().getModel();
+
+            const clickedItemContext = oEvent.getSource().getBindingContext()
+            const clickedItemPath = clickedItemContext.getPath();
+            const clickedItemObject = clickedItemContext.getObject();
+            const prevName = clickedItemObject.Name;
+
+            this.oApproveDialog = new Dialog({
+                type: DialogType.Message,
+                title: "Update",
+                content: new Input({
+                    id: "nameInput",
+                    value: prevName
+                }),
+                beginButton: new Button({
+                    type: ButtonType.Emphasized,
+                    text: "Submit",
+                    press: function () {
+                        const newName = this.oApproveDialog.getContent()[0].getValue()
+                        oModel.read("/Categories", {
+                            success: function (data) {
+                                console.log(data.results)
+                                // console.log(!data.results?.find(c => c.Name == newName))
+                                const isNameFree = !data.results?.find(cat => cat.Name === newName);
+
+                                if (isNameFree){
+                                    this._updateConfirmDialog(prevName, newName, clickedItemPath);                                
+                                } else {
+                                    console.log("is not free")
+                                    MessageBox.error("Category with that name already exists!", {
+                                        title: "Error"
+                                    })
+                                }
+                                this.oApproveDialog.destroy();
+                            }.bind(this),
+                            error: function (error) {
+                                console.log(error)
+                            }
+                        });
+
+                    }.bind(this)
+                }),
+                endButton: new Button({
+                    text: "Cancel",
+                    press: function () {
+                        this.oApproveDialog.destroy();
+                    }.bind(this)
+                })
+            });
+
+            this.oApproveDialog.open();
+        },
+        // Potwierdzenie update
+        _updateConfirmDialog: function(prevName, newName, clickedItemPath){
+            var oModel = this.getView().getModel();
+
+            this.oConfirmDialog = new Dialog({
+                type: DialogType.Message,
+                title: "Confirmation",
+                content: new Text({
+                    text: "Are you sure you want to rename category from ${prevName} to ${newName}?"
+                }),
+                beginButton: new Button({
+                    type: ButtonType.Accept,
+                    text: "Yes",
+                    press: function (){                    
+                        // console.log(this.oApproveDialog.getContent()[0].getValue())
+                        var oCat = {"Name": newName}
+                        oModel.update(clickedItemPath, oCat, {
+                            merge: true, /* if set to true: PATCHE/MERGE */
+                            success: function () { MessageToast.show("Success!"); },
+                            error: function (oError) { MessageToast.show("Something went wrong!"); }
+                        });
+                        this.oConfirmDialog.destroy();
+                    }.bind(this)
+                }),
+                endButton: new Button({
+                    text: "No",
+                    type: ButtonType.Reject,
+                    press: function () {
+                        this.oConfirmDialog.destroy();
+                    }.bind(this)
+                })
+            });
+        this.oConfirmDialog.open();
+        },
+
         /**
          * Event handler called when ViewSettingsDialog has been confirmed, i.e.
          * has been closed with 'OK'. In the case, the currently chosen filters, sorters or groupers
@@ -321,8 +448,6 @@ sap.ui.define([
             this.oApproveDialog.open();
 
         },
-        
-            
 
         /* =========================================================== */
         /* begin: internal methods                                     */
