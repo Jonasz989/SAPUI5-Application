@@ -94,6 +94,14 @@ sap.ui.define([
          * @param {sap.ui.base.Event} oEvent pattern match event in route 'object'
          * @private
          */
+        /**
+         * Binds the view to the object path. Makes sure that detail view displays
+         * a busy indicator while data for the corresponding element binding is loaded.
+         * @function
+         * @param {string} sObjectPath path to the object to be bound to the view.
+         * @private
+         */
+
         _onObjectMatched: function (oEvent) {
             var sObjectId =  oEvent.getParameter("arguments").objectId;
             this.getModel("appView").setProperty("/layout", "TwoColumnsMidExpanded");
@@ -105,20 +113,11 @@ sap.ui.define([
             }.bind(this));
         },
 
-        /**
-         * Binds the view to the object path. Makes sure that detail view displays
-         * a busy indicator while data for the corresponding element binding is loaded.
-         * @function
-         * @param {string} sObjectPath path to the object to be bound to the view.
-         * @private
-         */
         _bindView: function (sObjectPath) {
             // Set busy indicator during view binding
             var oViewModel = this.getModel("detailView");
-
             // If the view was not bound yet its not busy, only if the binding requests data it is set to busy again
             oViewModel.setProperty("/busy", false);
-
             this.getView().bindElement({
                 path : sObjectPath,
                 events: {
@@ -128,7 +127,11 @@ sap.ui.define([
                     },
                     dataReceived: function () {
                         oViewModel.setProperty("/busy", false);
-                    }
+                    
+                    },
+                parameters : {
+                    expand : "Supplier"
+                }
                 }
             });
         },
@@ -214,7 +217,7 @@ sap.ui.define([
          * create new product (name, description, release date, discontinued date, rating, price, category, supplier)
          */
         onAddProductClick: function(oEvent) {
-            this.getRouter().navTo("create", null)
+            this.getRouter().navTo("form", null)
         },
 
         onCategoryUpdateClick: function(){

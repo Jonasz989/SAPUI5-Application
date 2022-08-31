@@ -81,7 +81,7 @@
                                 title="{Name}"
                                 text="{ID}"/>
 
-                            <Text text="KSAKS"></Text>
+                            <Text text="Nie wiem czemu ale nie dziala"></Text>
 
                             <ObjectNumber
                                 number="{
