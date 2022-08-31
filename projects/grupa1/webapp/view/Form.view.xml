@@ -44,9 +44,9 @@
         </HBox>
 
       </HBox>
-        <HBox id="buttons">
-            <Button id="saveproduct" press=".onSaveProductClick" text="Submit" type="Accept"/>
-            <Button id="cancelproduct" press=".onCancelProductClick" text="Cancel" type="Reject"/>
+        <HBox class="submit-line-prod" id="buttons">
+            <Button class="button-prod" id="saveproduct" press=".onSaveProductClick" text="Submit" type="Accept"/>
+            <Button class="button-prod" id="cancelproduct" press=".onCancelProductClick" text="Cancel" type="Reject"/>
         </HBox>
         </VBox>
     </semantic:content>
