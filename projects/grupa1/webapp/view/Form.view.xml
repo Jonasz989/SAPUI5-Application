@@ -1,6 +1,16 @@
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/css" href="style.css"?>
-<mvc:View xmlns="sap.m" xmlns:semantic="sap.f.semantic" xmlns:mvc="sap.ui.core.mvc" controllerName="grupa1.controller.Form">
+
+<mvc:View xmlns="sap.m" 
+xmlns:semantic="sap.f.semantic" 
+xmlns:mvc="sap.ui.core.mvc" 
+xmlns:m="sap.m" 
+controllerName="grupa1.controller.Form">
+
+<m:Page
+		title="Back"
+		showNavButton="true"
+		navButtonPress=".onNavBack">
   <semantic:SemanticPage id="formPage" busy="{formView&gt;/busy}" busyIndicatorDelay="{formView&gt;/delay}">
     <semantic:titleHeading>
       <Title id="titlexd" text="Create Product" level="H2"/>
@@ -21,7 +31,7 @@
 
         </VBox>
         <VBox id="desc">
-          <Input id="prdesc"/>
+          <Input type="textPassword" id="prdesc"/>
           <Input id="prname"/>
           <Input id="prreldate" type="date"/>
           <Input id="prdiscdate" type="date"/>
@@ -51,4 +61,5 @@
         </VBox>
     </semantic:content>
   </semantic:SemanticPage>
+</m:Page>
 </mvc:View>
