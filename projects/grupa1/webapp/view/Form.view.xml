@@ -4,10 +4,85 @@
     xmlns:semantic="sap.f.semantic"
     xmlns:mvc="sap.ui.core.mvc">
 
-    <MessagePage
-        id="lol"
-        title="Lol"
-        text="Lol">
-    </MessagePage>
+<semantic:SemanticPage
+        id="formPage"
+        busy="{formView>/busy}"
+        busyIndicatorDelay="{formView>/delay}">
+        <semantic:titleHeading>
+            <Title
+                text="Create Product"
+                level="H2"/>
+        </semantic:titleHeading>
+        <semantic:content>
+
+            <VBox
+                id="vbox"
+                leftMargin="50%">
+            <HBox id="name">
+            <Label
+                id="prodname"
+                text="Name: "/>
+            <Input
+                id="prname"/>
+            </HBox>
+            <HBox id="desc">
+            <Label
+                id="proddesc"
+                text="Description: "/>
+            <Input
+                id="prdesc"/>
+            </HBox>
+            <HBox id="reldate">
+            <Label
+                id="prodreldate"
+                text="Released Date: "/>
+            <Input
+                id="prreldate"
+                type="date"/>
+            </HBox>
+            <HBox id="discdate">
+            <Label
+                id="proddiscdate"
+                text="Discontinued Date: "/>
+            <Input
+                id="prdiscdate"
+                type="date"/>
+            </HBox>
+            <HBox id="rating">
+            <Label
+                id="prodrating"
+                text="Rating: "/>
+            <Input
+                id="prrating"/>
+            </HBox>
+            <HBox id="price">
+            <Label
+                id="prodprice"
+                text="Price: "/>
+            <Input
+                id="prprice"/>
+            </HBox>
+            <HBox id="category">
+            <Label
+                id="prodcat"
+                text="Category: "/>
+            <Input
+                id="prcat"/>
+            </HBox>
+            <HBox id="supplier">
+            <Label
+                id="prodsup"
+                text="Supplier: "/>
+            <Input
+                id="prsup"/>
+            </HBox>
+    </VBox>
+
+            
+        </semantic:content>
+
+    </semantic:SemanticPage>
+
+    
 
 </mvc:View>
