@@ -54,7 +54,7 @@ sap.ui.define([
 
         onProductUpdateClick: function (oItem) {
             //const cos = oItem.getBindingContext();
-            var ID_PROD=null;
+            
             this.oApproveDialog = new Dialog({
                 type: DialogType.Message,
                 title: "Edit Product",
@@ -75,8 +75,7 @@ sap.ui.define([
                     new sap.m.Input({
                         minLength: 1,
                         maxLength: 1,
-                        type: "Number",
-                        id: "PRating" 
+                        id: "PRating"
                     }),
                     new sap.m.Label({text:"Price"}),
                     new sap.m.Input({
