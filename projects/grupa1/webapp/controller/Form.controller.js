@@ -30,13 +30,12 @@ sap.ui.define([
         _onFormDisplayed : function () {
             this.getModel("appView").setProperty("/layout", "OneColumn");
         },
-        
+
 
         onSaveProductClick: function () {
             console.log(this.getView().byId("prprice").getValue());
 
             var oModel = this.getView("detailView").getModel();
-
             var oEntry = {};
             var that = this;
 
@@ -60,13 +59,32 @@ sap.ui.define([
                         //"Supplier/ID": "1"
                     
                     }
-                    oModel.create("/Products", oCat, {
-                        success: function () { MessageToast.show("Success!"); },
-                        error: function (oError) { MessageToast.show("Something went wrong :c"); }
-                });
+
+                    //VALIDATION
+
+                    const bad_inputs = [",", ".", "=", "!", "?"];
+
+                    var flag = true;
+
+                    for(let i=0; i<bad_inputs.length; i++) {
+                        if(oCat.Name.includes(bad_inputs[i])) {
+                            flag = false;
+                            console.log(flag)
+                        }
+                    }
+
+                    if(flag && oCat.Rating <= 5 && oCat.Rating >=1){
+                        oModel.create("/Products", oCat, {
+                            success: function () { MessageToast.show("Success!"); 
+                        },
+                            error: function (oError) { MessageToast.show("Something went wrong :c"); }
+                        })
+                    }
+                    else{
+                        MessageToast.show("Wrong Input!")
+                    }
+
             }
-
-
             });
 
             history.back();
