@@ -14,7 +14,7 @@
                 level="H2"/>
         </semantic:titleHeading>
         <semantic:headerContent>
-            <ObjectAttribute title="{i18n>priceTitle}"/>
+            <ObjectAttribute title="Category ID"/>
             <ObjectNumber
                 number="{
                     path: 'ID',
@@ -37,13 +37,13 @@
                             text="{detailView>/lineItemListTitle}"
                             titleStyle="H3"
                             level="H3"/>
-                    <Button
+                    <!-- <Button
                         id="updateId"
                         press=".onUpdateClick"
                         text="Update Category"
                         type="Emphasized"
-                        active="true"/>
-                    <Button
+                        active="true"/> -->
+                    <!-- <Button
                         id="deleteonlyCategoryButton"
                         press=".onCategoryDeleteonlyClick"
                         text="Delete Only Category"
@@ -52,7 +52,7 @@
                         id="deleteCategoryItemsButton"
                         press=".onCategoryDeletemultiClick"
                         text="Delete Category with Items"
-                        type="Reject"/>
+                        type="Reject"/> -->
                     <Button
                         id="AddProductButton"
                         press=".onAddProductClick"
