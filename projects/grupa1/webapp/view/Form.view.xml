@@ -31,12 +31,12 @@ controllerName="grupa1.controller.Form">
 
         </VBox>
         <VBox id="desc">
-          <Input id="prdesc" type=""/>
-          <Input id="prname"/>
-          <Input id="prreldate" type="date"/>
-          <Input id="prdiscdate" type="date"/>
-          <Input id="prrating"/>
-          <Input id="prprice"/>
+          <Input id="prname" maxLength="10"/>
+          <Input id="prdesc" maxLength="20"/>
+          <Input id="prreldate" />
+          <Input id="prdiscdate" />
+          <Input id="prrating" maxLength="1"/>
+          <Input id="prprice" maxLength="10"/>
           <Input id="prcat"/>
           <Input id="prsup"/>
         </VBox>
