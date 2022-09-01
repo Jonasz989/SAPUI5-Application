@@ -100,16 +100,17 @@ sap.ui.define([
                         var prodprice = sap.ui.getCore().byId("PPrice").getValue();
 
                         var oCat ={
-                            if(prodname.length != 0){
-                                "Name": prodname
-                            }
-
+                            "Name": prodname,
+                            "Description": proddesc,
+                            "Rating": prodrating,
+                            "Price": prodprice
                             }
                         var oModel = this.getView().getModel();
 
-                        oModel.create("/Categories", oCat, {
+                        oModel.update("/Products({ID_PROD})", oCat, {
+                            merge: true, /* if set to true: PATCHE/MERGE */
                             success: function () { MessageToast.show("Success!"); },
-                            error: function (oError) { MessageToast.show("Something went wrong :c"); }
+                            error: function (oError) { MessageToast.show("Something went wrong!"); }
                         });
                         this.oApproveDialog.destroy();
                     }.bind(this)
