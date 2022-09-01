@@ -27,7 +27,11 @@
             <layout:VerticalLayout> 
                 <m:Label text="Discontinued Date"/> 
                 <m:Text text="{DiscontinuedDate}"/> 
-            </layout:VerticalLayout> 
+            </layout:VerticalLayout>
+            <layout:VerticalLayout> 
+                <m:Label text="Price"/> 
+                <m:Text text="{Price}"/> 
+            </layout:VerticalLayout>  
             <m:RatingIndicator maxValue="5" class="sapUiSmallMarginBottom" value="{Rating}" editable="false" tooltip="Rating Tooltip"/>
             <m:Text width="400px"
 					text="{Description}"/>
