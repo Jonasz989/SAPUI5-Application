@@ -4,7 +4,7 @@
 <mvc:View xmlns="sap.m" 
 xmlns:semantic="sap.f.semantic" 
 xmlns:mvc="sap.ui.core.mvc" 
-xmlns:m="sap.m" 
+xmlns:m="sap.m"
 controllerName="grupa1.controller.Form">
 
 <m:Page
@@ -35,7 +35,22 @@ controllerName="grupa1.controller.Form">
           <Input id="prdesc" maxLength="20"/>
           <Input id="prreldate" />
           <Input id="prdiscdate" />
-          <Input id="prrating" maxLength="1"/>
+
+        <Input id='prrating'
+            type="Number"
+            value="{
+                path: '/number',
+                type: 'sap.ui.model.type.Integer',
+                formatOptions: {
+                    groupingEnabled: false,
+                    groupingSeparator: ',',
+                    decimalSeparator: '.'
+                },
+                constraints : {
+                    minimum: '0',
+                    maximum: '99'
+                }
+        }" />
           <Input id="prprice" maxLength="10"/>
           <Input id="prcat"/>
           <Input id="prsup"/>
