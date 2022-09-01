@@ -34,22 +34,39 @@ sap.ui.define([
 
         onSaveProductClick: function () {
             console.log(this.getView().byId("prprice").getValue());
-            var oCat={
-                "ID": Math.floor(Math.random()*151)+5,
-                "Name": this.getView().byId("prname").getValue(),
-                "Description": this.getView().byId("prdesc").getValue(),
-                //"ReleaseDate": this.getView().byId("prreldate").getValue(),
-                //"DiscontinuedDate": this.getView().byId("prdiscdate").getValue(),
-                "Rating": this.getView().byId("prrating").getValue(),
-                "Price": this.getView().byId("prprice").getValue(),
-                //"Category/ID": "1",
-                //"Supplier/ID": "1"
-            }
+
             var oModel = this.getView("detailView").getModel();
 
-            oModel.create("/Products", oCat, {
-                success: function () { MessageToast.show("Success!"); },
-                error: function (oError) { MessageToast.show("Something went wrong :c"); }
+            var oEntry = {};
+            var that = this;
+
+            oModel.read("/Products",{
+                sorters: [new sap.ui.model.Sorter("ID", true)],
+                success: function(odata){
+                    console.log(odata.results);
+                    console.log(odata.results[0].ID);
+                    oEntry.ID = odata.results[0].ID + 1;
+                    console.log(oEntry.ID);
+                    
+                    var oCat={
+                        "ID": oEntry.ID,
+                        "Name": that.getView().byId("prname").getValue(),
+                        "Description": that.getView().byId("prdesc").getValue(),
+                        //"ReleaseDate": this.getView().byId("prreldate").getValue(),
+                        //"DiscontinuedDate": this.getView().byId("prdiscdate").getValue(),
+                        "Rating": that.getView().byId("prrating").getValue(),
+                        "Price": that.getView().byId("prprice").getValue(),
+                        //"Category/ID": "1",
+                        //"Supplier/ID": "1"
+                    
+                    }
+                    oModel.create("/Products", oCat, {
+                        success: function () { MessageToast.show("Success!"); },
+                        error: function (oError) { MessageToast.show("Something went wrong :c"); }
+                });
+            }
+
+
             });
 
             history.back();
