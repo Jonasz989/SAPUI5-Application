@@ -61,24 +61,30 @@ sap.ui.define([
                 content:[
                     new sap.m.Label({text:"Name"}),
                     new sap.m.Input({
+                        minLength: 1,
                         maxLength: 20,
                         id: "PName"
-                    })
-                    // new sap.m.Label({text:"Description"}),
-                    // new sap.m.Input({
-                    //     maxLength: 20,
-                    //     id: "PDesc"
-                    // }),
-                    // new sap.m.Label({text:"Rating"}),
-                    // new sap.m.Input({
-                    //     maxLength: 1,
-                    //     id: "PRating" 
-                    // }),
-                    // new sap.m.Label({text:"Price"}),
-                    // new sap.m.Input({
-                    //     maxLength: 7,
-                    //     id: "PPrice" 
-                //   })
+                    }),
+                    new sap.m.Label({text:"Description"}),
+                    new sap.m.Input({
+                        minLength: 1,
+                        maxLength: 30,
+                        id: "PDesc"
+                    }),
+                    new sap.m.Label({text:"Rating"}),
+                    new sap.m.Input({
+                        minLength: 1,
+                        maxLength: 1,
+                        type: "Number",
+                        id: "PRating" 
+                    }),
+                    new sap.m.Label({text:"Price"}),
+                    new sap.m.Input({
+                        minLength: 1,
+                        maxLength: 7,
+                        type: "Number",
+                        id: "PPrice" 
+                  })
                 ],
                 beginButton: new Button({
                     type: ButtonType.Emphasized,
@@ -92,28 +98,13 @@ sap.ui.define([
 
                         var oCat ={
                             "Name": prodname,
-                            //"Description": proddesc,
-                            //"Rating": prodrating,
-                            //"Price": prodprice
+                            "Description": proddesc,
+                            "Rating": prodrating,
+                            "Price": prodprice
                             }
                         var oModel = this.getView().getModel();
                         //console.log(sObjectId);
                         
-                        var category=null;
-                        
-
-                        oModel.read("/Products(1)", {
-                            success: function (data) {
-                                console.log(data.results);
-                                // data.results.forEach(function(oItem) {
-                                // if (oItem.Id === sObjectId) {
-                                //     category = oItem.category.Id;
-                                //     return category;
-                                // }
-                                // })
-                        }});
-                        //console.log(category);
-
 
                         oModel.update("/Products("+sObjectId+")", oCat, {
                             merge: true, /* if set to true: PATCHE/MERGE */
