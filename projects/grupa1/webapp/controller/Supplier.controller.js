@@ -21,7 +21,7 @@ sap.ui.define([
     MessageToast, MessageBox, Input) {
 
     "use strict";
-    
+    var sObjectId;
     return BaseController.extend("grupa1.controller.Supplier", {
 
         onInit: function () {
@@ -36,7 +36,7 @@ sap.ui.define([
         },
         
         _onObjectMatched: function (oEvent) {
-            var sObjectId = oEvent.getParameter("arguments").objectId;
+            sObjectId = oEvent.getParameter("arguments").objectId;
             this.getModel("appView").setProperty("/layout", "OneColumn");
             this.getModel().metadataLoaded().then( function() {
                 this._bindView("/Products("+ sObjectId + ")");
@@ -53,38 +53,28 @@ sap.ui.define([
 
         onProductUpdateClick: function (oItem) {
             //const cos = oItem.getBindingContext();
+            var ID_PROD=null;
             this.oApproveDialog = new Dialog({
                 type: DialogType.Message,
                 title: "Edit Product",
                 content:[
-
                     new sap.m.Label({text:"Name"}),
                     new sap.m.Input({
-
                         maxLength: 20,
                         id: "PName"
-
                     }),
-
                     new sap.m.Label({text:"Description"}),
                     new sap.m.Input({
-
                         maxLength: 20,
                         id: "PDesc"
-
                     }),
-
                     new sap.m.Label({text:"Rating"}),
                     new sap.m.Input({
-
                         maxLength: 1,
                         id: "PRating" 
-
                     }),
-
                     new sap.m.Label({text:"Price"}),
                     new sap.m.Input({
-
                         maxLength: 7,
                         id: "PPrice" 
                   })
@@ -106,8 +96,9 @@ sap.ui.define([
                             "Price": prodprice
                             }
                         var oModel = this.getView().getModel();
+                        console.log(sObjectId);
 
-                        oModel.update("/Products({ID_PROD})", oCat, {
+                        oModel.update("/Products("+sObjectId+")", oCat, {
                             merge: true, /* if set to true: PATCHE/MERGE */
                             success: function () { MessageToast.show("Success!"); },
                             error: function (oError) { MessageToast.show("Something went wrong!"); }
