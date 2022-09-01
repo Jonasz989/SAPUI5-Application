@@ -63,22 +63,22 @@ sap.ui.define([
                     new sap.m.Input({
                         maxLength: 20,
                         id: "PName"
-                    }),
-                    new sap.m.Label({text:"Description"}),
-                    new sap.m.Input({
-                        maxLength: 20,
-                        id: "PDesc"
-                    }),
-                    new sap.m.Label({text:"Rating"}),
-                    new sap.m.Input({
-                        maxLength: 1,
-                        id: "PRating" 
-                    }),
-                    new sap.m.Label({text:"Price"}),
-                    new sap.m.Input({
-                        maxLength: 7,
-                        id: "PPrice" 
-                  })
+                    })
+                    // new sap.m.Label({text:"Description"}),
+                    // new sap.m.Input({
+                    //     maxLength: 20,
+                    //     id: "PDesc"
+                    // }),
+                    // new sap.m.Label({text:"Rating"}),
+                    // new sap.m.Input({
+                    //     maxLength: 1,
+                    //     id: "PRating" 
+                    // }),
+                    // new sap.m.Label({text:"Price"}),
+                    // new sap.m.Input({
+                    //     maxLength: 7,
+                    //     id: "PPrice" 
+                //   })
                 ],
                 beginButton: new Button({
                     type: ButtonType.Emphasized,
@@ -86,9 +86,9 @@ sap.ui.define([
                     press: function () {
 
                         var prodname = sap.ui.getCore().byId("PName").getValue();
-                        var proddesc = sap.ui.getCore().byId("PDesc").getValue();
-                        var prodrating = sap.ui.getCore().byId("PRating").getValue();
-                        var prodprice = sap.ui.getCore().byId("PPrice").getValue();
+                        //var proddesc = sap.ui.getCore().byId("PDesc").getValue();
+                        //var prodrating = sap.ui.getCore().byId("PRating").getValue();
+                        //var prodprice = sap.ui.getCore().byId("PPrice").getValue();
 
                         var oCat ={
                             "Name": prodname,
@@ -102,7 +102,7 @@ sap.ui.define([
                         var category=null;
                         
 
-                        oModel.read("/Products(1)/Category", {
+                        oModel.read("/Products(1)", {
                             success: function (data) {
                                 console.log(data.results);
                                 // data.results.forEach(function(oItem) {
