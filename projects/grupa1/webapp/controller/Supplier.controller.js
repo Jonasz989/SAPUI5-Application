@@ -116,6 +116,45 @@ sap.ui.define([
 
             this.oApproveDialog.open();
 
+        },
+
+        onProductDeleteClick: function(){
+            var oModel = this.getView().getModel();
+
+
+            this.oApproveDialog = new Dialog({
+                type: DialogType.Message,
+                title: "Are you sure?",
+                beginButton: new Button({
+                    type: ButtonType.Emphasized,
+                    text: "Yes",
+                    press: function () {
+                       
+                        oModel.remove("/Products("+sObjectId+")", {
+                            success: function (data) {
+                                MessageBox.success("Item is gone!", {
+                                    title: "Success"
+                                })
+                            },
+                            error: function (e) {
+                                alert("error");
+                            }
+                        });
+
+                        this.oApproveDialog.destroy();
+                        history.goBack();
+                    }.bind(this)
+                }),
+                endButton: new Button({
+                    text: "Cancel",
+                    press: function() {
+                        this.oApproveDialog.destroy();
+                    }.bind(this)
+                })
+            });
+
+            this.oApproveDialog.open();
+            
         }
     })
 });
