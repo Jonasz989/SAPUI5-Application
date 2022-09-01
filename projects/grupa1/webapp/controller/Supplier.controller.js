@@ -22,6 +22,7 @@ sap.ui.define([
 
     "use strict";
     var sObjectId;
+    var sCatId;
     return BaseController.extend("grupa1.controller.Supplier", {
 
         onInit: function () {
@@ -91,12 +92,28 @@ sap.ui.define([
 
                         var oCat ={
                             "Name": prodname,
-                            "Description": proddesc,
-                            "Rating": prodrating,
-                            "Price": prodprice
+                            //"Description": proddesc,
+                            //"Rating": prodrating,
+                            //"Price": prodprice
                             }
                         var oModel = this.getView().getModel();
-                        console.log(sObjectId);
+                        //console.log(sObjectId);
+                        
+                        var category=null;
+                        
+
+                        oModel.read("/Products(1)/Category", {
+                            success: function (data) {
+                                console.log(data.results);
+                                // data.results.forEach(function(oItem) {
+                                // if (oItem.Id === sObjectId) {
+                                //     category = oItem.category.Id;
+                                //     return category;
+                                // }
+                                // })
+                        }});
+                        //console.log(category);
+
 
                         oModel.update("/Products("+sObjectId+")", oCat, {
                             merge: true, /* if set to true: PATCHE/MERGE */
@@ -129,7 +146,18 @@ sap.ui.define([
                     type: ButtonType.Emphasized,
                     text: "Yes",
                     press: function () {
-                       
+
+                        
+                        oModel.remove("/Products("+sObjectId+")/Category", {
+                            success: function (data) {
+                                MessageBox.success("Category connection is gone!", {
+                                    title: "Success"
+                                })
+                            },
+                            error: function (e) {
+                                alert("error");
+                            }
+                        });
                         oModel.remove("/Products("+sObjectId+")", {
                             success: function (data) {
                                 MessageBox.success("Item is gone!", {
@@ -140,6 +168,8 @@ sap.ui.define([
                                 alert("error");
                             }
                         });
+
+                        
 
                         this.oApproveDialog.destroy();
                         history.goBack();
