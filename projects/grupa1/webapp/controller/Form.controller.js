@@ -64,24 +64,46 @@ sap.ui.define([
 
                     const bad_inputs = [",", ".", "=", "!", "?"];
 
-                    var flag = true;
+                    var NameSQLCheck = true;
+                    var DescSQLCheck = true;
+                    var RatingValueCheck = true;
+                    var UltimateCheck = true
 
+                    
+                    //
                     for(let i=0; i<bad_inputs.length; i++) {
                         if(oCat.Name.includes(bad_inputs[i])) {
-                            flag = false;
-                            console.log(flag)
+                            NameSQLCheck = false;
+                            console.log(NameSQLCheck)
                         }
                     }
 
-                    if(flag && oCat.Rating <= 5 && oCat.Rating >=1){
+                    for(let i=0; i<bad_inputs.length; i++) {
+                        if(oCat.Description.includes(bad_inputs[i])) {
+                            DescSQLCheck = false;
+                            console.log(DescSQLCheck)
+                        }
+                    }
+
+                    if(oCat.Rating > 5 && oCat.Rating <1){
+                        RatingValueCheck = false
+                    }
+                
+                    const ConditionList = [NameSQLCheck, DescSQLCheck, RatingValueCheck]
+
+                    for(let i=0; i<ConditionList.length; i++){
+                        if(ConditionList[i] == false){
+                            MessageToast.show(i)
+                            UltimateCheck = false
+                        }
+                    }
+
+                    if(UltimateCheck) {
                         oModel.create("/Products", oCat, {
                             success: function () { MessageToast.show("Success!"); 
                         },
                             error: function (oError) { MessageToast.show("Something went wrong :c"); }
                         })
-                    }
-                    else{
-                        MessageToast.show("Wrong Input!")
                     }
 
             }
