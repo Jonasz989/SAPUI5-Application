@@ -99,8 +99,8 @@
                 </items>
             </Table>
         </semantic:content>
-        <!--Semantic ShareMenu Buttons-->
 
+        <!--Semantic ShareMenu Buttons-->
         <semantic:fullScreenAction>
             <semantic:FullScreenAction
                     id="enterFullScreen"

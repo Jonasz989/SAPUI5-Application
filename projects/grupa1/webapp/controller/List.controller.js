@@ -173,90 +173,89 @@ sap.ui.define([
             }
         },
 
+        /*
+            Add new category
+        */
         onAddCategoryClick: function() { 
             this.oApproveDialog = new Dialog({
-             type: DialogType.Message, 
-            title: "Create category", 
-            content:[
-            new sap.m.Label({text:"Name"}),
-            new sap.m.Input({
-             id: "nameInput",
-             maxLength: 10 
-            })
-        ],
-            beginButton: new Button({
-             type: ButtonType.Emphasized, 
-            text: "Submit", 
-            press: function () {
-          
-            var oModel = this.getView().getModel();
-
-        var oEntry = {};
-
-                var that = this;
-
-        oModel.read("/Categories",{
-            sorters:  [new sap.ui.model.Sorter("ID",true)],
-            success: function(odata){
-                console.log(odata.results);
-                console.log(odata.results[0].ID);
-                oEntry.ID = odata.results[0].ID + 1;
-                console.log(oEntry.ID);
-                const catName= that.oApproveDialog.getContent()[1].getValue();
-                const isNameFree = !odata.results?.find(cat => cat.Name === catName);
-                const bad_inputs = [",", ".", "=", "!", "?","'",'"',"%",";","*","/", "SELECT", "UPDATE", "DELETE"];
-                var NameSQLCheck = true;
-
-
-                if(!catName.length==0){
-                if (isNameFree){
-                    
-                    for(let i=0; i<bad_inputs.length; i++) {
-                        if(catName.includes(bad_inputs[i])) {
-                            NameSQLCheck = false;
-                            console.log(NameSQLCheck)
-                        }
-                    }
-                    if(NameSQLCheck) {
-                    var oCat = {
-                        "ID": oEntry.ID,
-                        "Name": catName 
-                        };
-                    oModel.create("/Categories", oCat, {
-                        success: function () { MessageToast.show("Success!");  
-                        that.oApproveDialog.destroy()},
-                        error: function (oError) { MessageToast.show("Something went wrong!"); }
-                    });                                
-                    }
-                    else{
-                        MessageToast.show("Invalid input Name!")
-                    }
-                } else {
-                    console.log("is not free")
-                    MessageBox.error("Category with that name already exists!", {
-                        title: "Error"
+                type: DialogType.Message, 
+                title: "Create category", 
+                content:[
+                    new sap.m.Label({text:"Name"}),
+                    new sap.m.Input({
+                    id: "nameInput",
+                    maxLength: 10 
                     })
-                }
-            }
-            else{
-                console.log("name length 0")
-                MessageBox.error("You must enter name!", {
-                    title: "Error"
+                ],
+                beginButton: new Button({
+                type: ButtonType.Emphasized, 
+                text: "Submit", 
+                press: function () {
+
+                    var oModel = this.getView().getModel();
+                    var oEntry = {};
+                    var that = this;
+
+                    oModel.read("/Categories",{
+                        sorters:  [new sap.ui.model.Sorter("ID",true)],
+                        success: function(odata){
+                            console.log(odata.results);
+                            console.log(odata.results[0].ID);
+                            oEntry.ID = odata.results[0].ID + 1;
+                            console.log(oEntry.ID);
+                            const catName= that.oApproveDialog.getContent()[1].getValue();
+                            const isNameFree = !odata.results?.find(cat => cat.Name === catName);
+                            const bad_inputs = [",", ".", "=", "!", "?","'",'"',"%",";","*","/", "SELECT", "UPDATE", "DELETE"];
+                            var NameSQLCheck = true;
+
+                            if(!catName.length==0){
+                                if (isNameFree){
+                                    for(let i=0; i<bad_inputs.length; i++) {
+                                        if(catName.includes(bad_inputs[i])) {
+                                            NameSQLCheck = false;
+                                            console.log(NameSQLCheck)
+                                        }
+                                    }
+                                    if(NameSQLCheck) {
+                                        var oCat = {
+                                        "ID": oEntry.ID,
+                                        "Name": catName 
+                                    };
+                                    oModel.create("/Categories", oCat, {
+                                        success: function () { MessageToast.show("Success!");  
+                                            that.oApproveDialog.destroy()},
+                                        error: function (oError) { MessageToast.show("Something went wrong!"); }
+                                    });                                
+                                    }
+                                    else{
+                                        MessageToast.show("Invalid input Name!")
+                                    }
+                                } else {
+                                    console.log("is not free")
+                                    MessageBox.error("Category with that name already exists!", {
+                                        title: "Error"
+                                    })
+                                }
+                            }
+                            else{
+                                console.log("name length 0")
+                                MessageBox.error("You must enter name!", {
+                                    title: "Error"
+                                })
+                            }
+                        }
+                    });
+                }.bind(this)
+                }), 
+                endButton: new Button ({
+                    text: "Cancel", 
+                    press: function () {
+                        this .oApproveDialog.destroy();
+                    }.bind(this)
                 })
-            }
-            }
-        });
-            }.bind(this)
-             }), 
-            endButton: new Button ({
-             text: "Cancel", 
-            press: function () {
-             this .oApproveDialog.destroy();
-            }.bind(this)
-            })
             });
             this .oApproveDialog.open();
-            },
+        },
 
         // Po wcisnieciu update
         onUpdateClick: function(oEvent){
@@ -321,7 +320,6 @@ sap.ui.define([
                     }.bind(this)
                 })
             });
-
             this.oApproveDialog.open();
         },
         // Potwierdzenie update
@@ -357,6 +355,59 @@ sap.ui.define([
                 })
             });
         this.oConfirmDialog.open();
+        },
+
+        //usuwanie kategorii
+        
+        onDeleteClick: function(oEvent) {
+            const clickedItemPath = oEvent.getSource().getBindingContext().getPath()
+            var oModel = this.getView().getModel();
+
+            oModel.read("/Products", {
+                success: function (data) {
+                    var counter=data.results.length
+                    console.log(counter);
+                    this.oApproveDialog = new Dialog({
+                        type: DialogType.Message,
+                        title: "Are you want to DESTROY category?",
+                        content: new Text({
+                            text: "There are "+counter+" products, some might be in this category"
+                          }),
+                        beginButton: new Button({
+                            type: ButtonType.Emphasized,
+                            text: "Yes! :)",
+                            press: function () {
+                               
+                                oModel.remove(clickedItemPath, {
+                                    success: function (data) {
+                                        MessageBox.success("Category has been deleted!", {
+                                            title: "Success"
+                                        })
+                                    },
+                                    error: function (e) {
+                                        alert("error");
+                                    }
+                                });
+        
+                                this.oApproveDialog.destroy();
+                            }.bind(this)
+                        }),
+                        endButton: new Button({
+                            text: "Cancel",
+                            press: function() {
+                                this.oApproveDialog.destroy();
+                            }.bind(this)
+                        })
+                    });
+        
+                    this.oApproveDialog.open();
+
+                }.bind(this),
+                error: function (error) {
+                    console.log(error)
+                }
+            });
+            
         },
 
         /**
@@ -474,66 +525,6 @@ sap.ui.define([
 
     
 
-        //usuwanie kategorii
-
-        onDeleteClick: function(oEvent) {
-            const clickedItemPath = oEvent.getSource().getBindingContext().getPath()
-            var oModel = this.getView().getModel();
-
-            oModel.read("/Products", {
-                success: function (data) {
-                    var counter=data.results.length
-                    console.log(counter);
-                    this.oApproveDialog = new Dialog({
-                        type: DialogType.Message,
-                        title: "Are you want to DESTROY category?",
-                        content: new Text({
-                            text: "There are "+counter+" products, some might be in this category"
-                          }),
-                        beginButton: new Button({
-                            type: ButtonType.Emphasized,
-                            text: "Yes! :)",
-                            press: function () {
-                               
-                                oModel.remove(clickedItemPath, {
-                                    success: function (data) {
-                                        MessageBox.success("Category has been deleted!", {
-                                            title: "Success"
-                                        })
-                                    },
-                                    error: function (e) {
-                                        alert("error");
-                                    }
-                                });
-        
-                                this.oApproveDialog.destroy();
-                            }.bind(this)
-                        }),
-                        endButton: new Button({
-                            text: "Cancel",
-                            press: function() {
-                                this.oApproveDialog.destroy();
-                            }.bind(this)
-                        })
-                    });
-        
-                    this.oApproveDialog.open();
-
-                }.bind(this),
-                error: function (error) {
-                    console.log(error)
-                }
-            });
-
-
-            
-
-
-
-
-            
-            
-        },
 
         /* =========================================================== */
         /* begin: internal methods                                     */

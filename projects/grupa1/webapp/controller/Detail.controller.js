@@ -28,17 +28,13 @@ sap.ui.define([
             });
 
             this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
-
             this.setModel(oViewModel, "detailView");
-
             this.getOwnerComponent().getModel().metadataLoaded().then(this._onMetadataLoaded.bind(this));
         },
 
         /* =========================================================== */
         /* event handlers                                              */
         /* =========================================================== */
-
-        
 
         
         /**
@@ -191,14 +187,11 @@ sap.ui.define([
         },
 
         /**
-         * create new product (name, description, release date, discontinued date, rating, price, category, supplier)
+         * create new product
          */
         onAddProductClick: function() {
             this.getRouter().navTo("form", null)
         },
-
-
-
         
     });
 

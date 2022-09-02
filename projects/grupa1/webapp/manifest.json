@@ -7,8 +7,8 @@
         "applicationVersion": {
             "version": "0.0.1"
         },
-        "title": "{{appTitle}}",
-        "description": "{{appDescription}}",
+        "title": "Inventory management",
+        "description": "Inventory management ekstrim",
         "resources": "resources.json",
         "sourceTemplate": {
             "id": "@sap/generator-fiori:listdetail",

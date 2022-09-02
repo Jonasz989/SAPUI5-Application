@@ -26,12 +26,13 @@ sap.ui.define([
         onInit: function () {
             this.getRouter().getTarget("form").attachDisplay(this._onFormDisplayed, this);
         },
-
         _onFormDisplayed : function () {
             this.getModel("appView").setProperty("/layout", "OneColumn");
         },
 
-
+        /*
+        ADD PRODUCT
+        */
         onSaveProductClick: function () {
             console.log(this.getView().byId("prprice").getValue());
 
@@ -57,11 +58,9 @@ sap.ui.define([
                         "Price": that.getView().byId("prprice").getValue(),
                         //"Category/ID": "1",
                         //"Supplier/ID": "1"
-                    
                     }
 
                     //VALIDATION
-
                     const bad_inputs = [",", ".", "=", "!", "?","'",'"',"%",";","*","/", "SELECT", "UPDATE", "DELETE"];
                     var messages = {
                         0: "Invalid input Name!",
@@ -73,7 +72,7 @@ sap.ui.define([
                     var RatingValueCheck = true;
                     var UltimateCheck = true
                     
-                    //
+                    
                     for(let i=0; i<bad_inputs.length; i++) {
                         if(oCat.Name.includes(bad_inputs[i])) {
                             NameSQLCheck = false;
