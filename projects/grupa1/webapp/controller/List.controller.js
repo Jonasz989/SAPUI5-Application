@@ -205,10 +205,11 @@ sap.ui.define([
                 const catName= that.oApproveDialog.getContent()[1].getValue();
                 const isNameFree = !odata.results?.find(cat => cat.Name === catName);
 
+                if(!catName.length==0){
                 if (isNameFree){
                     var oCat = {
                         "ID": oEntry.ID,
-                        "Name": catName.length === 0 ? "Default" : catName 
+                        "Name": catName 
                         };
                     oModel.create("/Categories", oCat, {
                         success: function () { MessageToast.show("Success!");  
@@ -221,6 +222,13 @@ sap.ui.define([
                         title: "Error"
                     })
                 }
+            }
+            else{
+                console.log("name length 0")
+                MessageBox.error("You must enter name!", {
+                    title: "Error"
+                })
+            }
             }
         });
             }.bind(this)

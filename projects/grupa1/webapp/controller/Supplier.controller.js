@@ -171,7 +171,10 @@ sap.ui.define([
 
             this.oApproveDialog = new Dialog({
                 type: DialogType.Message,
-                title: "Are you sure?",
+                title: "Confirmation",
+                content: new Text({
+                    text: "Are you sure?"
+                }),
                 beginButton: new Button({
                     type: ButtonType.Emphasized,
                     text: "Yes",
