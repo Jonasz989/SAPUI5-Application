@@ -75,6 +75,7 @@ sap.ui.define([
                     new sap.m.Input({
                         minLength: 1,
                         maxLength: 1,
+                        type: "Number",
                         id: "PRating"
                     }),
                     new sap.m.Label({text:"Price"}),
