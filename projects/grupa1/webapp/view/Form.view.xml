@@ -77,7 +77,7 @@ controllerName="grupa1.controller.Form">
 						textAlign="Center"
 						validationMode="{validationMode}"
 						change="onChange"/>
-          <Input id="prprice" maxLength="10"/>
+          <Input id="prprice" type="Number"/>
           <Input id="prcat"/>
           <Input id="prsup"/>
 

@@ -63,7 +63,11 @@ sap.ui.define([
                     //VALIDATION
 
                     const bad_inputs = [",", ".", "=", "!", "?","'",'"',"%",";","*","/", "SELECT", "UPDATE", "DELETE"];
-
+                    var messages = {
+                        0: "Invalid input Name!",
+                        1: "Invalid input Description!",
+                        2: "Invalid input Rating!"
+                        }
                     var NameSQLCheck = true;
                     var DescSQLCheck = true;
                     var RatingValueCheck = true;
@@ -92,7 +96,7 @@ sap.ui.define([
 
                     for(let i=0; i<ConditionList.length; i++){
                         if(ConditionList[i] == false){
-                            MessageToast.show(i)
+                            MessageToast.show(messages[i])
                             UltimateCheck = false
                         }
                     }
