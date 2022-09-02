@@ -38,19 +38,7 @@ sap.ui.define([
         /* event handlers                                              */
         /* =========================================================== */
 
-        /**
-         * Event handler when the share by E-Mail button has been clicked
-         * @public
-         */
-        onSendEmailPress: function () {
-            var oViewModel = this.getModel("detailView");
-
-            URLHelper.triggerEmail(
-                null,
-                oViewModel.getProperty("/shareSendEmailSubject"),
-                oViewModel.getProperty("/shareSendEmailMessage")
-            );
-        },
+        
 
         
         /**
@@ -184,15 +172,7 @@ sap.ui.define([
             oViewModel.setProperty("/delay", iOriginalViewBusyDelay);
         },
 
-        /**
-         * Set the full screen mode to false and navigate to list page
-         */
-        onCloseDetailPress: function () {
-            this.getModel("appView").setProperty("/actionButtonsInfo/midColumn/fullScreen", false);
-            // No item should be selected on list after detail page is closed
-            this.getOwnerComponent().oListSelector.clearListListSelection();
-            this.getRouter().navTo("list");
-        },
+        
 
         /**
          * Toggle between full and non full screen mode.

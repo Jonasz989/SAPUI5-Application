@@ -52,7 +52,7 @@ sap.ui.define([
                         "Name": that.getView().byId("prname").getValue(),
                         "Description": that.getView().byId("prdesc").getValue(),
                         "ReleaseDate": that.getView().byId("prreldate").getValue(),
-                        "DiscontinuedDate": that.getView().byId("prdiscdate").getValue(),
+                        "DiscontinuedDate": that.getView().byId("prdiscdate").getValue().length === 0 ? null : that.getView().byId("prdiscdate").getValue(),
                         "Rating": that.getView().byId("prrating").getValue(),
                         "Price": that.getView().byId("prprice").getValue(),
                         //"Category/ID": "1",
