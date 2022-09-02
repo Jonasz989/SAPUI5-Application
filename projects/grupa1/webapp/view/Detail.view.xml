@@ -10,12 +10,14 @@
         busyIndicatorDelay="{detailView>/delay}">
         <semantic:titleHeading>
             <Title
+                id="tid"
                 text="{Name}"
                 level="H2"/>
         </semantic:titleHeading>
         <semantic:headerContent>
-            <ObjectAttribute title="Category ID"/>
+            <ObjectAttribute id="cid" title="Category ID"/>
             <ObjectNumber
+                id="idid"
                 number="{
                     path: 'ID',
                     formatter: '.formatter.numberUnit'
@@ -31,7 +33,7 @@
                 noDataText="{i18n>detailLineItemTableNoDataText}"
                 busyIndicatorDelay="{detailView>/lineItemTableDelay}">
                 <headerToolbar>
-                    <Toolbar>
+                    <Toolbar id="tbar">
                         <Title
                             id="lineItemsTitle"
                             text="{detailView>/lineItemListTitle}"
@@ -62,29 +64,32 @@
                 
                 </headerToolbar>
                 <columns>
-                    <Column>
-                        <Text text="{i18n>detailLineItemTableIDColumn}"/>
+                    <Column id="c1">
+                        <Text id="t1" text="{i18n>detailLineItemTableIDColumn}"/>
                     </Column>
-                    <Column>
-                        <Text text="Description"/>
+                    <Column id="c2">
+                        <Text id="t2" text="Description"/>
                     </Column>
                     <Column
+                        id="c3"
                         minScreenWidth="Tablet"
                         demandPopin="true"
                         hAlign="End">
-                        <Text text="{i18n>detailLineItemTableUnitNumberColumn}"/>
+                        <Text id="t3" text="{i18n>detailLineItemTableUnitNumberColumn}"/>
                     </Column>
                 </columns>
                 <items>
-                    <ColumnListItem press=".handleRowPress" type="Active">
+                    <ColumnListItem id="cli" press=".handleRowPress" type="Active">
                         <cells>
                             <ObjectIdentifier
+                                id="oiid"
                                 title="{Name}"
                                 text="{ID}"/>
 
-                            <Text text="{Description}"></Text>
+                            <Text id="t4" text="{Description}"></Text>
 
                             <ObjectNumber
+                                id="priceid"
                                 number="{
                                     path: 'Price',
                                     formatter: '.formatter.currencyValue'

@@ -8,6 +8,7 @@ xmlns:m="sap.m"
 controllerName="grupa1.controller.Form">
 
 <m:Page
+        id="pgform"
 		title="Back"
 		showNavButton="true"
 		navButtonPress=".onNavBack">

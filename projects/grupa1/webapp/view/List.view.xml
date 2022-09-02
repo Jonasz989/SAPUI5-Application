@@ -50,7 +50,7 @@
                 </infoToolbar>
 
                 <headerToolbar>
-                    <OverflowToolbar>
+                    <OverflowToolbar id="oflowtb">
                         <SearchField
                             id="searchField"
                             showRefreshButton="true"
@@ -59,13 +59,14 @@
                             width="auto">
                             <layoutData>
                                 <OverflowToolbarLayoutData
+                                    id="oflowtbldata"
                                     minWidth="150px"
                                     maxWidth="240px"
                                     shrinkable="true"
                                     priority="NeverOverflow"/>
                             </layoutData>
                         </SearchField>
-                        <ToolbarSpacer/>
+                        <ToolbarSpacer id="tbsr"/>
                         <Button
                             id="sortButton"
                             press=".onOpenViewSettings"
@@ -92,6 +93,7 @@
                 </headerToolbar>
                 <items>
                     <ObjectListItem
+                        id="nav"
                         type="Navigation"
                         press=".onSelectionChange"
                         title="{Name}"
