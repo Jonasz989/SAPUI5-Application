@@ -447,15 +447,14 @@ sap.ui.define([
 
             oModel.read("/Products", {
                 success: function (data) {
-                    var counter=0;
-                    console.log(data.results)
-                    // console.log(!data.results?.find(c => c.Name == newName))
-                    counter=data.results.length
+                    var counter=data.results.length
                     console.log(counter);
                     this.oApproveDialog = new Dialog({
                         type: DialogType.Message,
                         title: "Are you want to DESTROY category?",
-                        text: "There are "+counter+" products in this category",
+                        content: new Text({
+                            text: "There are "+counter+" products, some might be in this category"
+                          }),
                         beginButton: new Button({
                             type: ButtonType.Emphasized,
                             text: "Yes! :)",
