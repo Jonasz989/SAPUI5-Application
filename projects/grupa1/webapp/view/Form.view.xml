@@ -59,8 +59,24 @@ controllerName="grupa1.controller.Form">
                             },
                             constraints: { }
                         }" />
-
-          <Input id='prrating' maxLength="1"/>
+          <StepInput
+                        id="prrating"
+						value="{value}"
+						displayValuePrecision="{displayValuePrecision}"
+						min="1"
+						max="5"
+						width="{width}"
+						step="1"
+						largerStep="{largerStep}"
+						stepMode="{stepMode}"
+						valueState="{valueState}"
+						enabled="{enabled}"
+						editable="{editable}"
+						description="{description}"
+						fieldWidth="{fieldWidth}"
+						textAlign="Center"
+						validationMode="{validationMode}"
+						change="onChange"/>
           <Input id="prprice" maxLength="10"/>
           <Input id="prcat"/>
           <Input id="prsup"/>
