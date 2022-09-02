@@ -68,7 +68,6 @@ sap.ui.define([
                     var DescSQLCheck = true;
                     var RatingValueCheck = true;
                     var UltimateCheck = true
-
                     
                     //
                     for(let i=0; i<bad_inputs.length; i++) {

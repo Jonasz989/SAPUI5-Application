@@ -91,25 +91,63 @@ sap.ui.define([
                     press: function () {
 
                         var prodname = sap.ui.getCore().byId("PName").getValue();
-                        //var proddesc = sap.ui.getCore().byId("PDesc").getValue();
-                        //var prodrating = sap.ui.getCore().byId("PRating").getValue();
-                        //var prodprice = sap.ui.getCore().byId("PPrice").getValue();
+                        var proddesc = sap.ui.getCore().byId("PDesc").getValue();
+                        var prodrating = sap.ui.getCore().byId("PRating").getValue();
+                        var prodprice = sap.ui.getCore().byId("PPrice").getValue();
 
-                        var oCat ={
-                            "Name": prodname,
-                            "Description": proddesc,
-                            "Rating": prodrating,
-                            "Price": prodprice
-                            }
-                        var oModel = this.getView().getModel();
-                        //console.log(sObjectId);
+                        const bad_inputs = [",", ".", "=", "!", "?"];
+
+                        var NameSQLCheck = true;
+                        var DescSQLCheck = true;
+                        var RatingValueCheck = true;
+                        var UltimateCheck = true
                         
+                        //
+                        for(let i=0; i<bad_inputs.length; i++) {
+                            if(prodname.includes(bad_inputs[i])) {
+                                NameSQLCheck = false;
+                                console.log(NameSQLCheck)
+                            }
+                        }
+    
+                        for(let i=0; i<bad_inputs.length; i++) {
+                            if(proddesc.includes(bad_inputs[i])) {
+                                DescSQLCheck = false;
+                                console.log(DescSQLCheck)
+                            }
+                        }
+    
+                        if(prodrating > 5 && prodrating <1){
+                            RatingValueCheck = false
+                        }
+                    
+                        const ConditionList = [NameSQLCheck, DescSQLCheck, RatingValueCheck]
+    
+                        for(let i=0; i<ConditionList.length; i++){
+                            if(ConditionList[i] == false){
+                                MessageToast.show(i)
+                                UltimateCheck = false
+                            }
+                        }
+    
+                        if(UltimateCheck) {
 
-                        oModel.update("/Products("+sObjectId+")", oCat, {
-                            merge: true, /* if set to true: PATCHE/MERGE */
-                            success: function () { MessageToast.show("Success!"); },
-                            error: function (oError) { MessageToast.show("Something went wrong!"); }
-                        });
+                            var oCat ={
+                                "Name": prodname,
+                                "Description": proddesc,
+                                "Rating": prodrating,
+                                "Price": prodprice
+                                }
+                            var oModel = this.getView().getModel();
+                            //console.log(sObjectId);
+                            
+    
+                            oModel.update("/Products("+sObjectId+")", oCat, {
+                                merge: true, /* if set to true: PATCHE/MERGE */
+                                success: function () { MessageToast.show("Success!"); },
+                                error: function (oError) { MessageToast.show("Something went wrong!"); }
+                            });
+                        }
                         this.oApproveDialog.destroy();
                     }.bind(this)
                 }),
@@ -119,6 +157,7 @@ sap.ui.define([
                         this.oApproveDialog.destroy();
                     }.bind(this)
                 })
+
             });
 
             this.oApproveDialog.open();
