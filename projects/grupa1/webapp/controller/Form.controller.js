@@ -62,7 +62,7 @@ sap.ui.define([
 
                     //VALIDATION
 
-                    const bad_inputs = [",", ".", "=", "!", "?","'",'"'];
+                    const bad_inputs = [",", ".", "=", "!", "?","'",'"',"%",";","*","/", "SELECT", "UPDATE", "DELETE"];
 
                     var NameSQLCheck = true;
                     var DescSQLCheck = true;

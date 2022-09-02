@@ -96,7 +96,7 @@ sap.ui.define([
                         var prodrating = sap.ui.getCore().byId("PRating").getValue();
                         var prodprice = sap.ui.getCore().byId("PPrice").getValue();
 
-                        const bad_inputs = [",", ".", "=", "!", "?"];
+                        const bad_inputs = [",", ".", "=", "!", "?","'",'"',"%",";","*","/", "SELECT", "UPDATE", "DELETE"];
 
                         var NameSQLCheck = true;
                         var DescSQLCheck = true;
