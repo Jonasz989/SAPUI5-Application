@@ -1,9 +1,12 @@
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/css" href="style.css"?>
 
-<mvc:View xmlns="sap.m" 
+<mvc:View 
+xmlns="sap.m" 
 xmlns:semantic="sap.f.semantic" 
 xmlns:mvc="sap.ui.core.mvc" 
+xmlns:f="sap.ui.layout.form"
+xmlns:core="sap.ui.core"
 xmlns:m="sap.m"
 controllerName="grupa1.controller.Form">
 
@@ -34,12 +37,34 @@ controllerName="grupa1.controller.Form">
         <VBox id="desc">
           <Input id="prname" maxLength="10"/>
           <Input id="prdesc" maxLength="20"/>
-          <Input id="prreldate" />
-          <Input id="prdiscdate" />
+            <DatePicker
+                        id="prreldate"
+                        value="{
+                            path:'/DateValue',
+                            type:'sap.ui.model.type.Date',
+                            formatOptions: {
+                                style: 'short',
+                                strictParsing: true
+                            },
+                            constraints: { }
+                        }" />
+            <DatePicker
+                        id="prdiscdate"
+                        value="{
+                            path:'/DateValue',
+                            type:'sap.ui.model.type.Date',
+                            formatOptions: {
+                                style: 'short',
+                                strictParsing: true
+                            },
+                            constraints: { }
+                        }" />
+
           <Input id='prrating' maxLength="1"/>
           <Input id="prprice" maxLength="10"/>
           <Input id="prcat"/>
           <Input id="prsup"/>
+
         </VBox>
         <HBox id="reldate">
         </HBox>
