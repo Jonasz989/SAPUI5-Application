@@ -20,6 +20,11 @@
     
     <headerContent>
 
+            <layout:VerticalLayout>
+            <m:Label text="Description"/>
+            <m:Text 
+					text="{Description}"/>
+            </layout:VerticalLayout>
             <layout:VerticalLayout> 
                 <m:Label text="Release Date"/>
                 <m:Text text="{ReleaseDate}"/>  
@@ -32,19 +37,24 @@
                 <m:Label text="Price"/> 
                 <m:Text text="{Price}"/> 
             </layout:VerticalLayout>  
+            <layout:VerticalLayout>
+            <m:Label text="Rating"/>
             <m:RatingIndicator maxValue="5" class="sapUiSmallMarginBottom" value="{Rating}" editable="false" tooltip="Rating Tooltip"/>
-            <m:Text width="400px"
-					text="{Description}"/>
-            <m:Button
+            </layout:VerticalLayout>
+            
+            <layout:VerticalLayout> 
+                <m:Button
                     id="updateProductButton"
                     press=".onProductUpdateClick"
                     text="Update Product"
-                    type="Emphasized"/>
-            <m:Button
+                    type="Emphasized"/> 
+                <m:Button
                     id="deleteProductButton"
                     press=".onProductDeleteClick"
                     text="Delete Product"
                     type="Reject"/>
+            </layout:VerticalLayout>
+            
         
     </headerContent> 
         <sections> 
