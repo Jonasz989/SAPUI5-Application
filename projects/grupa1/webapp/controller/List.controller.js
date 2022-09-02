@@ -204,9 +204,20 @@ sap.ui.define([
                 console.log(oEntry.ID);
                 const catName= that.oApproveDialog.getContent()[1].getValue();
                 const isNameFree = !odata.results?.find(cat => cat.Name === catName);
+                const bad_inputs = [",", ".", "=", "!", "?","'",'"',"%",";","*","/", "SELECT", "UPDATE", "DELETE"];
+                var NameSQLCheck = true;
+
 
                 if(!catName.length==0){
                 if (isNameFree){
+                    
+                    for(let i=0; i<bad_inputs.length; i++) {
+                        if(catName.includes(bad_inputs[i])) {
+                            NameSQLCheck = false;
+                            console.log(NameSQLCheck)
+                        }
+                    }
+                    if(NameSQLCheck) {
                     var oCat = {
                         "ID": oEntry.ID,
                         "Name": catName 
@@ -216,6 +227,10 @@ sap.ui.define([
                         that.oApproveDialog.destroy()},
                         error: function (oError) { MessageToast.show("Something went wrong!"); }
                     });                                
+                    }
+                    else{
+                        MessageToast.show("Invalid input Name!")
+                    }
                 } else {
                     console.log("is not free")
                     MessageBox.error("Category with that name already exists!", {
@@ -251,6 +266,8 @@ sap.ui.define([
             const clickedItemPath = clickedItemContext.getPath();
             const clickedItemObject = clickedItemContext.getObject();
             const prevName = clickedItemObject.Name;
+            const bad_inputs = [",", ".", "=", "!", "?","'",'"',"%",";","*","/", "SELECT", "UPDATE", "DELETE"];
+            var NameSQLCheck = true;
 
             this.oApproveDialog = new Dialog({
                 type: DialogType.Message,
@@ -271,7 +288,17 @@ sap.ui.define([
                                 const isNameFree = !data.results?.find(cat => cat.Name === newName);
 
                                 if (isNameFree){
-                                    this._updateConfirmDialog(prevName, newName, clickedItemPath);                                
+                                    for(let i=0; i<bad_inputs.length; i++) {
+                                        if(newName.includes(bad_inputs[i])) {
+                                            NameSQLCheck = false;
+                                            console.log(NameSQLCheck)
+                                        }
+                                    }
+                                    if(NameSQLCheck) {
+                                    this._updateConfirmDialog(prevName, newName, clickedItemPath);
+                                    } else{
+                                        MessageToast.show("Invalid input Name!")
+                                    }                              
                                 } else {
                                     console.log("is not free")
                                     MessageBox.error("Category with that name already exists!", {
