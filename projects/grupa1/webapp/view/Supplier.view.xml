@@ -13,18 +13,15 @@
 	
     <ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false"> 
     <headerTitle> 
-    <ObjectPageHeader id="headerForTest" objectTitle="{Name}" objectSubtitle="ID: {ID} "/> 
+    
+     <ObjectPageHeader id="headerDescription" objectTitle="{Name}" objectSubtitle="ID: {ID} /r/n Description: {Description} "/>
     
     </headerTitle>
 
     
     <headerContent>
 
-            <layout:VerticalLayout>
-            <m:Label text="Description"/>
-            <m:Text 
-					text="{Description}"/>
-            </layout:VerticalLayout>
+            
             <layout:VerticalLayout> 
                 <m:Label text="Release Date"/>
                 <m:Text text="{ReleaseDate}"/>  
