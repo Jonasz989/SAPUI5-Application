@@ -7,6 +7,7 @@
     height="100%">
 
     <m:Page
+        id="suppage"
 		title="Back"
 		showNavButton="true"
 		navButtonPress=".onNavBack">
@@ -14,64 +15,87 @@
     <ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false"> 
     <headerTitle> 
     
-     <ObjectPageHeader id="headerDescription" objectTitle="{Name}" objectSubtitle="ID: {ID} /r/n Description: {Description} "/>
+     <ObjectPageHeader 
+        id="headerDescription"
+        objectTitle="{Name}"
+        objectSubtitle="ID: {ID}">
+        <layout:VerticalLayout id="l1">
+            <m:RatingIndicator id="rating" maxValue="5" class="sapUiSmallMarginBottom" value="{Rating}" editable="false" tooltip="Rating Tooltip"/>
+            <m:ObjectNumber id="price" class="sapMObjectNumberLarge" number="{Price}" unit="$"/>
+        </layout:VerticalLayout>
+        
+     </ObjectPageHeader>
     
     </headerTitle>
 
     
     <headerContent>
 
-            
-            <layout:VerticalLayout> 
-                <m:Label text="Release Date"/>
-                <m:Text text="{ReleaseDate}"/>  
-            </layout:VerticalLayout> 
-            <layout:VerticalLayout> 
-                <m:Label text="Discontinued Date"/> 
-                <m:Text text="{DiscontinuedDate}"/> 
-            </layout:VerticalLayout>
-            <layout:VerticalLayout> 
-                <m:Label text="Price"/> 
-                <m:Text text="{Price}"/> 
-            </layout:VerticalLayout>  
-            <layout:VerticalLayout>
-            <m:Label text="Rating"/>
-            <m:RatingIndicator maxValue="5" class="sapUiSmallMarginBottom" value="{Rating}" editable="false" tooltip="Rating Tooltip"/>
-            </layout:VerticalLayout>
-            
-            <layout:VerticalLayout> 
+            <layout:VerticalLayout id="l2">
+                <m:Label id="desc" text="Description"/>
+				<m:Text id="tdesc" text="{Description}"/>
+                <layout:HorizontalLayout id="l3">
+                </layout:HorizontalLayout>
+                <layout:HorizontalLayout id="l4">
+                    <layout:VerticalLayout id="l5"> 
+                        <m:Label id="rdate" text="Release Date"/>
+                        <m:Text id="trdate" text="{ReleaseDate}"/>
+                    </layout:VerticalLayout> 
+
+                    <layout:VerticalLayout id="l6"> 
+                    </layout:VerticalLayout>
+                    
+                    <layout:VerticalLayout id="l7"> 
+                        <m:Label id="ddate" text="Discontinued Date"/> 
+                        <m:Text id="tddate" text="{DiscontinuedDate}"/> 
+                    </layout:VerticalLayout>
+                    <layout:VerticalLayout id="l8"> 
+                    </layout:VerticalLayout>
                 <m:Button
                     id="updateProductButton"
                     press=".onProductUpdateClick"
                     text="Update Product"
                     type="Emphasized"/> 
+                    <layout:VerticalLayout id="l9"> 
+                    </layout:VerticalLayout>
                 <m:Button
                     id="deleteProductButton"
                     press=".onProductDeleteClick"
                     text="Delete Product"
                     type="Reject"/>
-            </layout:VerticalLayout>
+                </layout:HorizontalLayout>
+				
+			</layout:VerticalLayout>
+             
+            
+            <!-- <layout:VerticalLayout> 
+                <m:Label text="Price"/> 
+                <m:Text text="{Price}"/> 
+            </layout:VerticalLayout>   -->
+            
+            
+            
             
         
     </headerContent> 
         <sections> 
         
-            <ObjectPageSection titleUppercase="false" title="2014 Goals Plan"> 
+            <ObjectPageSection id="ops" titleUppercase="false" title="2014 Goals Plan"> 
                 <subSections> 
-                    <ObjectPageSubSection title="Supplier info" titleUppercase="false"> 
+                    <ObjectPageSubSection id="opss" title="Supplier info" titleUppercase="false"> 
                     
                         <blocks> 
-                            <forms:SimpleForm editable="false" layout="ColumnLayout"> 
-                                <m:Label text="Name"/> 
-                                <m:Text text="{Supplier/Name}"/> 
-                                <m:Label text="Street"/> 
-                                <m:Text text="{Supplier/Address/Street}"/> 
-                                <m:Label text="State"/> 
-                                <m:Text text="{Supplier/Address/State}"/>
-                                <m:Label text="Zip Code"/> 
-                                <m:Text text="{Supplier/Address/ZipCode}"/> 
-                                <m:Label text="Country"/> 
-                                <m:Text text="{Supplier/Address/Country}"/>  
+                            <forms:SimpleForm id="sform" editable="false" layout="ColumnLayout"> 
+                                <m:Label id="lname" text="Name"/> 
+                                <m:Text id="tname" text="{Supplier/Name}"/> 
+                                <m:Label id="lstreet" text="Street"/> 
+                                <m:Text id="tstreet" text="{Supplier/Address/Street}"/> 
+                                <m:Label id="lstate" text="State"/> 
+                                <m:Text id="tstate" text="{Supplier/Address/State}"/>
+                                <m:Label id="lzcode" text="Zip Code"/> 
+                                <m:Text id="tzcode" text="{Supplier/Address/ZipCode}"/> 
+                                <m:Label id="lcountry" text="Country"/> 
+                                <m:Text id="tcountry" text="{Supplier/Address/Country}"/>  
 
                             </forms:SimpleForm> 
                         </blocks> 
