@@ -185,28 +185,17 @@ sap.ui.define([
                     press: function () {
 
                         
-                        oModel.remove("/Products("+sObjectId+")/Category", {
-                            success: function (data) {
-                                MessageBox.success("Category connection is gone!", {
-                                    title: "Success"
-                                })
-                            },
-                            error: function (e) {
-                                alert("error");
-                            }
-                        });
                         oModel.remove("/Products("+sObjectId+")", {
                             success: function (data) {
+                                console.log(sObjectId)
                                 MessageBox.success("Item is gone!", {
                                     title: "Success"
                                 })
                             },
                             error: function (e) {
-                                alert("error");
+                                alert("error"+e);
                             }
                         });
-
-                        
 
                         this.oApproveDialog.destroy();
                         history.goBack();
