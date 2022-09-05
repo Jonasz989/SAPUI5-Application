@@ -99,10 +99,11 @@ sap.ui.define([
                             UltimateCheck = false
                         }
                     }
-
+                    oModel.setUseBatch(false);
                     if(UltimateCheck) {
                         oModel.create("/Products", oCat, {
-                            success: function () { MessageToast.show("Success!"); 
+                            success: function () { MessageToast.show("Success!");
+                            oModel.setUseBatch(true); 
                         },
                             error: function (oError) { MessageToast.show("Something went wrong :c"); }
                         })
