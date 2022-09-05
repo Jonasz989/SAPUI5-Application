@@ -146,10 +146,11 @@ sap.ui.define([
                             var oModel = this.getView().getModel();
                             //console.log(sObjectId);
                             
-    
+                            oModel.setUseBatch(false);
                             oModel.update("/Products("+sObjectId+")", oCat, {
                                 merge: true, /* if set to true: PATCHE/MERGE */
-                                success: function () { MessageToast.show("Success!"); },
+                                success: function () { MessageToast.show("Success!"); 
+                                oModel.setUseBatch(true);},
                                 error: function (oError) { MessageToast.show("Something went wrong!"); }
                             });
                         }
@@ -184,14 +185,16 @@ sap.ui.define([
                     text: "Yes",
                     press: function () {
 
-                        
+                        oModel.setUseBatch(false);
                         oModel.remove("/Products("+sObjectId+")", {
                             success: function (data) {
                                 console.log(sObjectId)
                                 MessageBox.success("Item is gone!", {
                                     title: "Success"
                                 })
+                                oModel.setUseBatch(true);
                             },
+                            
                             error: function (e) {
                                 alert("error"+e);
                             }
