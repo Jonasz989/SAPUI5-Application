@@ -221,8 +221,10 @@ sap.ui.define([
                                         "ID": oEntry.ID,
                                         "Name": catName 
                                     };
+                                    oModel.setUseBatch(false);
                                     oModel.create("/Categories", oCat, {
                                         success: function () { MessageToast.show("Success!");  
+                                        oModel.setUseBatch(true);
                                             that.oApproveDialog.destroy()},
                                         error: function (oError) { MessageToast.show("Something went wrong!"); }
                                     });                                
@@ -325,7 +327,7 @@ sap.ui.define([
         // Potwierdzenie update
         _updateConfirmDialog: function(prevName, newName, clickedItemPath){
             var oModel = this.getView().getModel();
-
+            oModel.setUseBatch(false);
             this.oConfirmDialog = new Dialog({
                 type: DialogType.Message,
                 title: "Confirmation",
@@ -340,7 +342,9 @@ sap.ui.define([
                         var oCat = {"Name": newName}
                         oModel.update(clickedItemPath, oCat, {
                             merge: true, /* if set to true: PATCHE/MERGE */
-                            success: function () { MessageToast.show("Success!"); },
+                            success: function () { MessageToast.show("Success!"); 
+                            oModel.setUseBatch(true);},
+                            
                             error: function (oError) { MessageToast.show("Something went wrong!"); }
                         });
                         this.oConfirmDialog.destroy();
@@ -377,12 +381,13 @@ sap.ui.define([
                             type: ButtonType.Emphasized,
                             text: "Yes! :)",
                             press: function () {
-                               
+                                oModel.setUseBatch(false);
                                 oModel.remove(clickedItemPath, {
                                     success: function (data) {
                                         MessageBox.success("Category has been deleted!", {
                                             title: "Success"
                                         })
+                                        oModel.setUseBatch(true);
                                     },
                                     error: function (e) {
                                         alert("error");
