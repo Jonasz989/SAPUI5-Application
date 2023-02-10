@@ -1,2 +1,2 @@
 # SAPUI5-Grupa-1
-Test numer 1
+Small application with SAPUI5
